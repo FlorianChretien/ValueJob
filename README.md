@@ -27,7 +27,7 @@ Extension :
 #### Front-end
 
 - HTML/CSS
-- VueJS
+- React-native
 
 #### Back-End
 
