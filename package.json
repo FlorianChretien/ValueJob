@@ -1,0 +1,25 @@
+{
+  "name": "how-much-I-have-to-be-paid-",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/FlorianChretien/how-much-I-have-to-be-paid-.git",
+  "script": {
+    "dev": "webpack --mode=development --display-error-details",
+    "build": "webpack --mode=production"
+  },
+  "author": "Florian Chrétien <f.chretien@oenodata.fr>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.2",
+    "graphql": "^14.0.0",
+    "mongoose": "^5.2.13",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "url-loader": "^1.1.1",
+    "vue": "^2.5.17",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
+  }
+}
