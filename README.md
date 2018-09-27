@@ -8,7 +8,7 @@ Maquette : https://www.figma.com/file/TbB8v0gDWOqCq9O48iKvXuik/How-much-i-have-t
 
 ValueJob a pour but de vous faire découvrir votre véritable valeur sur le marché du travail.
 
-Pour cela une application mobile qui se veut le plus simple et complet possible. Grâce à notre outil vous pourrez rechercher n'importe métier et découvrir, sa définition actualisé chaque mois, les perspectives d'évolution et comment les atteindres et enfin un graphique du salaire moyen par tranche d'expérience. Pour cela vous pourrez filtrer par ville, région, compétence et spécialisation.
+Pour cela une application mobile qui se veut le plus simple et complet possible. Grâce à notre outil vous pourrez rechercher n'importe métier et découvrir : sa définition actualisé chaque mois, les perspectives d'évolution et comment les atteindres et enfin un graphique du salaire moyen par tranche d'expérience. Pour cela vous pourrez filtrer par ville, région, compétence et spécialisation.
 
 Les statistiques seront basées sur les sites concurrents, les api, sur nos utilisateurs inscrits mais aussi sur les offres d'emploi que nous mettrons à disposition.
 
