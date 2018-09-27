@@ -25,26 +25,30 @@ Le don. Un peu comme Wikipédia le but est de renseigner pour un monde meilleur.
 
 ### Etape de production
 
-1/ Statistique lié à un métier (système d'edition basée sur les votes de la communauté et disparition des votes les plus datés pour par exemple la définition du poste qui peut évoluer dans le temps)
-
-2/Statistique Global
-
-3/ Centraliser les offres d'emploi : ajouter/modifier/supprimer.
-
-Déterminer comment une personne peut prouver quelle fait ce métier. Gestion des données RGPD etc.
+1/ Statistique lié à un métier (système d'edition basée sur les votes de la communauté et disparition des votes les plus datés pour par exemple la définition du poste qui peut évoluer dans le temps)(Déterminer comment une personne peut prouver quelle fait ce métier. Gestion des données RGPD etc.)
 
 Inspiration Chooseyourbooss : 
 
 <img src="http://florian-chretien.fr/img/howpaidproject.png"  width="800" height="532" />
 
+2/ Statistique Global (Région, métiers etc)
+
+3/ Offre d'emploi (Gestion des entreprises et des demandeurs d'emplois, filtres)
+
 Extension :
 
-4/ Forum avec des catégories par secteurs, métiers, villes, prud'homme, chômage etc
+4/ Forum
 
-5/ Blog sur des conseils sur l'évolution des metiers, des secteurs d'avenir, des formations, liste des aides de l'état si on est au chomage/alternance/etc, conseil pour les chômeurs.
+5/ Blog
 
 
 ## Techno
+
+L'application doit être disponible sur Android et IOS pour couvrir un maximum d'utilisateurs. N'étant pas développeur Swift et Java je m'oriente naturellement vers des langages web et actuellement la meilleure solution me paraît être React-Native qui est plus performant que peut l'être Ionic par exemple. J'ai toujours eu envie d'approfondir cette techno. Je ne l'a pas connait que peut mais mes connaissances de VueJS devront m'aider.
+Côté serveur je vais utiliser aussi du JavaScript : NodeJS. Je connais assez mal Express mais j'ai vraiment envie de découvrir ces technos et tout ce qui si rattache (notamment GraphQL et MongoDB couplé avec Node).
+Cette application est pour moi l'occasion de découvrir des technos que je n'ai qu'effleurer et dont la maîtrise en fin d'année serait un énorme plus pour moi.
+Pour la captation des données je me donne plusieurs portes d'entrée comme cité plus haut mais je vais principalement scraper et utiliser des api pour avoir un bon début.
+
 
 #### Front-end
 
