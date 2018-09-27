@@ -45,8 +45,10 @@ Extension :
 ## Techno
 
 L'application doit être disponible sur Android et IOS pour couvrir un maximum d'utilisateurs. N'étant pas développeur Swift et Java je m'oriente naturellement vers des langages web et actuellement la meilleure solution me paraît être React-Native qui est plus performant que peut l'être Ionic par exemple. J'ai toujours eu envie d'approfondir cette techno. Je ne l'a pas connait que peut mais mes connaissances de VueJS devront m'aider.
+
 Côté serveur je vais utiliser aussi du JavaScript : NodeJS. Je connais assez mal Express mais j'ai vraiment envie de découvrir ces technos et tout ce qui si rattache (notamment GraphQL et MongoDB couplé avec Node).
 Cette application est pour moi l'occasion de découvrir des technos que je n'ai qu'effleurer et dont la maîtrise en fin d'année serait un énorme plus pour moi.
+
 Pour la captation des données je me donne plusieurs portes d'entrée comme cité plus haut mais je vais principalement scraper et utiliser des api pour avoir un bon début.
 
 
