@@ -2,7 +2,9 @@
 
 Maquette : https://www.figma.com/file/TbB8v0gDWOqCq9O48iKvXuik/How-much-i-have-to-be-paid
 
-## brief
+## Brief
+
+### Objectif
 
 1/ Le but est de donner une fourchette de salaire par Job, metier secteur en s'adaptant aux particularités du pays (exemple France province Idf régions etc), assez précis donc deux méthodes. Scrapper les site d'offres en ligne et/ou le faire remplir par les utilisateurs et/ou utiliser l'api de linkedin. (système d'edition basée sur les votes de la communauté et disparition des votes les plus datés pour par exemple la définition du poste qui peut évoluer dans le temps)
 
@@ -21,6 +23,10 @@ Extension :
 4/ Forum avec des catégories par secteurs, métiers, villes, prud'homme, chômage etc
 
 5/ Blog sur des conseils sur l'évolution des metiers, des secteurs d'avenir, des formations, liste des aides de l'état si on est au chomage/alternance/etc, conseil pour les chômeurs.
+
+### Cible
+
+Principalement les actifs. Puis, par la suite, inclure les chômeurs, stagiaire, alternant etc.
 
 ## Techno
 
