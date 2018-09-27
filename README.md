@@ -51,3 +51,4 @@ Principalement les actifs. Puis, par la suite, inclure les chômeurs, stagiaire,
 #### Scrap 
 
 - https://slimerjs.org/
+- Api pole emploi (demande réussi) https://api.gouv.fr/
