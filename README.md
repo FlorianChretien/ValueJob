@@ -1,6 +1,6 @@
 # ValueJob
 
-Maquette : https://www.figma.com/file/TbB8v0gDWOqCq9O48iKvXuik/How-much-i-have-to-be-paid
+Maquette : https://whimsical.co/F9EopkEHmiam786HRA4sTe
 
 ## Brief
 
