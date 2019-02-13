@@ -36,7 +36,7 @@ Le don. Un peu comme Wikipédia le but est de renseigner pour un monde meilleur.
 
 Inspiration Chooseyourbooss : 
 
-<img src="https://zupimages.net/up/19/07/4111.png"  width="800" height="532" />
+<img src="https://zupimages.net/up/19/07/4111.png"  width="743" height="614" />
 
 2/ Statistique Global (Région, métiers etc)
 
