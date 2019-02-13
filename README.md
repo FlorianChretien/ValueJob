@@ -62,15 +62,13 @@ Pour la captation des données je me donne plusieurs portes d'entrée comme cit�
 #### Front-end
 
 - HTML/CSS
-- React-native
+- NativeScript VueJS
 
 #### Back-End
 
 - Webpack (Yarn)
 - NodeJS
 - Express
-- GraphQL
-- ElasticSearch
 - Mongoose 
 
 #### BDD
