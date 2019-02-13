@@ -8,12 +8,19 @@ Maquette : https://www.figma.com/file/TbB8v0gDWOqCq9O48iKvXuik/How-much-i-have-t
 
 ValueJob a pour but de vous faire découvrir votre véritable valeur sur le marché du travail.
 
-Pour cela une application mobile qui se veut le plus simple et complet possible. Grâce à notre outil vous pourrez rechercher n'importe métier et découvrir : sa définition actualisé chaque mois, les perspectives d'évolution et comment les atteindres et enfin un graphique du salaire moyen par tranche d'expérience. Pour cela vous pourrez filtrer par ville, région, compétence et spécialisation.
-
-Les statistiques seront basées sur les sites concurrents, les api, sur nos utilisateurs inscrits mais aussi sur les offres d'emploi que nous mettrons à disposition.
+Pour cela une application mobile qui se veut le plus simple et complet possible. Grâce à notre outil vous pourrez rechercher n'importe  quel métier et découvrir : 
+- le salaire par rapport à d'expérience, la spécialisation et la localisation basé sur les données du marché du travail
+- Description
+- Compétences 
+- Formation
+- Responsabilités et évolution
+(Les 4 derniers seront éditables par la communauté)
 
 Mais ce n'est pas tout, une page réunissant l'ensemble des statistiques sera disponible à tous. On pourra notamment y retrouver le métier le mieux payé, le plus populaire etc. Dans l'avenir ses statistiques pourraient être plus complète et précise (les études, formation pour s'améliorer, spécialité du pays).
-Enfin un forum sera disponible pour que la communauté puisse échanger et s'entraider autour de nombreux sujets comme les secteurs d'avenirs, l'évolution des métiers, conseils sur les entretiens, liste des aides de l'état, les soucis juridiques, etc. Un blog viendra compléter le forum où les meilleurs pourront rédiger des articles sur un résumé des meilleurs conseils perdus dans le forum (des rédacteurs pourront par la suite en réaliser).
+Ce qui ne pourra pas être développé : un forum sera disponible pour que la communauté puisse échanger et s'entraider autour de nombreux sujets comme les secteurs d'avenirs, l'évolution des métiers, conseils sur les entretiens, liste des aides de l'état, les soucis juridiques, etc. Un blog viendra compléter le forum où les meilleurs pourront rédiger des articles sur un résumé des meilleurs conseils perdus dans le forum (des rédacteurs pourront par la suite en réaliser).
+
+*"les données du marché du travail"
+Les statistiques seront basées sur les sites concurrents, les api, sur nos utilisateurs inscrits mais aussi sur les offres d'emploi que nous mettrons à disposition.
 
 ### Cible
 
@@ -44,7 +51,7 @@ Extension :
 
 ## Techno
 
-L'application doit être disponible sur Android et IOS pour couvrir un maximum d'utilisateurs. N'étant pas développeur Swift et Java je m'oriente naturellement vers des langages web et actuellement la meilleure solution me paraît être React-Native qui est plus performant que peut l'être Ionic par exemple. J'ai toujours eu envie d'approfondir cette techno. Je ne l'a pas connait que peut mais mes connaissances de VueJS devront m'aider.
+L'application doit être disponible sur Android et IOS pour couvrir un maximum d'utilisateurs. N'étant pas développeur Swift et Java je m'oriente naturellement vers des langages web et actuellement la meilleure solution me paraît être NativeScript pour moi car je me sens plus à l'aise avec VueJs qu'avec ReactNative. J'aurai pu très bien partir sur une pwa mais j'ai envie de pousser l'application le plus loin possible en utilisant une techno qui m'ouvrir le plus de porte possible et ne pas me retrouver limité plus tard.
 
 Côté serveur je vais utiliser aussi du JavaScript : NodeJS. Je connais assez mal Express mais j'ai vraiment envie de découvrir ces technos et tout ce qui si rattache (notamment GraphQL et MongoDB couplé avec Node).
 Cette application est pour moi l'occasion de découvrir des technos que je n'ai qu'effleurer et dont la maîtrise en fin d'année serait un énorme plus pour moi.
