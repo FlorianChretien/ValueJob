@@ -66,7 +66,6 @@ Pour la captation des données je me donne plusieurs portes d'entrée comme cit�
 
 #### Back-End
 
-- Webpack (Yarn)
 - NodeJS
 - Express
 - Mongoose 
