@@ -1,0 +1,14 @@
+{
+  "images": [
+    {
+      "size": "20x20",
+      "idiom": "universal",
+      "filename": "ic_job.png",
+      "scale": "1x"
+    }
+  ],
+  "info": {
+    "version": 1,
+    "author": "Florian"
+  }
+}
