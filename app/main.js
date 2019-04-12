@@ -6,7 +6,7 @@ import VueDevtools from 'nativescript-vue-devtools'
 require('nativescript-bottombar/vue').register(Vue);
 
 if(TNS_ENV !== 'production') {
-  Vue.use(VueDevtools, { host: 'localhost:8098' })
+  Vue.use(VueDevtools, { host: '10.18.72.127' })
 }
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = (TNS_ENV === 'production')
