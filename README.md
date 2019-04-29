@@ -94,5 +94,5 @@ tns build <platform> --bundle
 tns debug <platform> --bundle
 
 # Build, watch for changes and run the application
-tns run <platform> --bundle
+tns run ios --bundle --device iPhone Xs Max
 ```

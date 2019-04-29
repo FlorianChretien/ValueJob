@@ -1,18 +1,36 @@
 <template>
-    <Home></Home>
+    <Page actionBarHidden="true">
+        <GridLayout columns="*" rows="*, auto">
+            <Frame id="rootFrame">
+                <Page actionBarHidden="true">
+                </Page>
+            </Frame>
+            <BottomBar></BottomBar>
+        </GridLayout>
+    </Page>
 </template>
 
 <script>
-    import Home from '@/components/Views/Home.vue'
+    import HomeMetier from '@/components/Views/HomeMetier.vue'
+    import BottomBar from '@/components/BottomBar.vue'
 
     export default {
+        components: {
+            HomeMetier,
+            BottomBar
+        },
         data () {
             return {
-
+                pageTitle: void 0
             }
         },
-        components: {
-            Home
+        mounted() {
+            setTimeout(() => {
+                this.$navigateTo(HomeMetier, {
+                    frame: "rootFrame"
+                });
+                console.log('changement de page');
+            }, 1000);
         }
     }
 </script>

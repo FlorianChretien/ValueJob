@@ -1,51 +1,74 @@
 <template>
-    <StackLayout>
-        <GridLayout columns="*" rows="*, auto" class="BottomMenu">
-            <Label class="message" :text="msg" col="0" row="0"/>
-            <BottomBar row="1"
-                       v-on:tabSelected="tabSelected"
-                       v-bind:labelVisibility="labelVisibility"
-                       v-on:loaded="barLoaded">
-                <BottomBarItem
-                        icon="res://ic_metier"
-                        badge="1"
-                        title="Métier"
-                >
-                </BottomBarItem>
-                <BottomBarItem
-                        icon="res://ic_statistique"
-                        badge="2"
-                        title="Statistique"
-                >
-                </BottomBarItem>
-                <BottomBarItem
-                        icon="res://ic_job"
-                        badge="3"
-                        title="Job"
-                >
-                </BottomBarItem>
-                <BottomBarItem
-                        icon="res://ic_profil"
-                        badge="4"
-                        title="Profil"
-                >
-                </BottomBarItem>
-            </BottomBar>
-        </GridLayout>
-    </StackLayout>
+    <BottomBar row="1"
+               v-on:tabSelected="tabSelected"
+               v-bind:labelVisibility="labelVisibility"
+               v-on:loaded="barLoaded">
+        <BottomBarItem
+                icon="~/assets/images/icones/ic_metier.png"
+                title="Métier"
+        >
+        </BottomBarItem>
+        <BottomBarItem
+                icon="~/assets/images/icones/ic_statistique.png"
+                title="Statistique"
+        >
+        </BottomBarItem>
+        <BottomBarItem
+                icon="~/assets/images/icones/ic_job.png"
+                badge="3"
+                title="Job"
+        >
+        </BottomBarItem>
+        <BottomBarItem
+                icon="~/assets/images/icones/ic_profil.png"
+                title="Profil"
+        >
+        </BottomBarItem>
+    </BottomBar>
 </template>
 
 <script>
+    import HomeMetier from "@/components/Views/HomeMetier.vue";
+    import Statistique from "@/components/Views/Statistique.vue";
+    import Job from "@/components/Views/Job.vue";
+    import Profil from "@/components/Views/Profil.vue";
+
     export default {
+        components: {
+            HomeMetier,
+            Statistique,
+            Job,
+            Profil
+        },
         data () {
             return {
-                labelVisibility: 0,
-                msg: 'Lucas'
+                labelVisibility: 0
             }
         },
         methods: {
             tabSelected: function(event) {
-                console.dir(event);
+                switch (event.newIndex) {
+                    case 0:
+                        this.$navigateTo(HomeMetier, {
+                            frame: "rootFrame"
+                        })
+                        break;
+                    case 1:
+                        this.$navigateTo(Statistique, {
+                            frame: "rootFrame"
+                        })
+                        break;
+                    case 2:
+                        this.$navigateTo(Job, {
+                            frame: "rootFrame"
+                        })
+                        break;
+                    case 3:
+                        this.$navigateTo(Profil, {
+                            frame: "rootFrame"
+                        })
+                        break;
+                }
             },
             barLoaded: function(event) {
                 console.dir(event);
@@ -56,25 +79,9 @@
 
 <style scoped>
     BottomBar {
-        inactive-tint-color: #C34491;
+        inactive-tint-color: #6082c3;
         active-tint-color: #FFFFFF;
-        bar-background-color: #9F489B;
+        bar-background-color: #475a9f;
         badge-background-color: #222222;
-    }
-
-    ActionBar {
-        background-color: #53ba82;
-        color: #ffffff;
-    }
-
-    .message {
-        vertical-align: center;
-        text-align: center;
-        font-size: 20;
-        color: #ffffff;
-    }
-
-    .BottomMenu{
-        background-color: #1a354f;
     }
 </style>
