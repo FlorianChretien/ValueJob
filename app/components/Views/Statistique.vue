@@ -1,14 +1,9 @@
 <template>
     <Page actionBarHidden="true">
-        <GridLayout columns="*" rows="*, auto">
-            <StackLayout>
-                <FlexboxLayout flexDirection="column">
-                    <Image alignSelf="center" width="140" src="~/assets/images/logo.png" class="logo" stretch="none"/>
-                    <Label text="Statistique.." />
-                </FlexboxLayout>
-            </StackLayout>
-            <BottomBar></BottomBar>
-        </GridLayout>
+        <ActionBar title="Statistique"/>
+        <StackLayout>
+            <Label text="Statistique.." />
+        </StackLayout>
     </Page>
 </template>
 

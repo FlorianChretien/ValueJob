@@ -2,17 +2,30 @@
     <Page actionBarHidden="true">
         <ScrollView orientation="vertical">
             <StackLayout class="global-container">
-                <FlexboxLayout flexDirection="column">
-                    <Image alignSelf="center" width="140" src="~/assets/images/logo.png" class="logo" stretch="none"/>
-                    <Label textWrap="true" class="h2" text="Découvrez votre véritable valeur sur le marché du travail" />
-                    <!--<SearchBar hint="Coiffeur, Docteur, Carrossier ..." :text="searchPhrase" @submit="onSearchSubmit"/>-->
-                    <Label textWrap="true" class="p" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec velit libero. Nulla porta purus id neque ultrices, at rhoncus augue convallis. Nulla blandit eu dui sit amet feugiat. Sed varius ligula risus, vel consequat nibh semper quis. " />
+                <FlexboxLayout flexDirection="column" class="container">
+                    <Image alignSelf="center" src="~/assets/images/logo.png" class="logo"/>
+                    <Label textWrap="true" class="h2" text="Découvrez votre véritable valeur sur le marché du travail"/>
+                    <Label textWrap="true" class="p" text="Gratuit et communautaire, Value Job a pour objectifs d'être un outil d'aide aux employés, chômeurs et étudiants qui recherche un ou leur métier. Salaires, Définitions, Formations mise à jour régulèriement grâce à la communauté et à diverses API basé sur l'emploi en 2019."/>
+                    <Button class="button" text="Chercher un métier" @tap="onButtonTap"/>
                 </FlexboxLayout>
                 <FlexboxLayout flexWrap="wrap" justifyContent="space-around" class="container_shortcut">
-                    <Image width="45%" src="~/assets/images/metier/boulanger.jpg" class="img-g" stretch="none"/>
-                    <Image width="45%" src="~/assets/images/metier/developpeur_web.jpg" class="img-d" stretch="none"/>
-                    <Image width="45%" src="~/assets/images/metier/docteur.jpg" class="img-g" stretch="none"/>
-                    <Image width="45%" src="~/assets/images/metier/eleveur.jpg" class="img-d" stretch="none"/>
+                    <Label textWrap="true" class="h3" text="Raccourci métier"/>
+                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around">
+                        <Image src="~/assets/images/metier/boulanger.jpg" class="img img-g"/>
+                        <Label textWrap="true" class="baseline" text="Boulanger"/>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around">
+                        <Image src="~/assets/images/metier/developpeur_web.jpg" class="img img-d"/>
+                        <Label textWrap="true" class="baseline" text="Développeur Web"/>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around">
+                        <Image src="~/assets/images/metier/docteur.jpg" class="img img-g"/>
+                        <Label textWrap="true" class="baseline" text="Médecin généraliste"/>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around">
+                        <Image src="~/assets/images/metier/eleveur.jpg" class="img img-d"/>
+                        <Label textWrap="true" class="baseline" text="Éleveur"/>
+                    </FlexboxLayout>
                 </FlexboxLayout>
             </StackLayout>
         </ScrollView>
@@ -20,46 +33,76 @@
 </template>
 
 <script>
+    import SearchMetier from "@/components/Views/SearchMetier.vue";
+
     export default {
-        data() {
-            return {
-                searchPhrase: ''
-            }
+        components: {
+            SearchMetier
         },
         methods: {
-            onSearchSubmit(args) {
-                let searchBar = args.object;
-                console.log("You are searching for " + searchBar.text);
+            onButtonTap() {
+                this.$navigateTo(SearchMetier, {
+                    frame: "rootFrame"
+                });
             }
         }
+
     }
 </script>
 
 <style scoped lang="scss">
-    .global-container{
-        padding: 16;
-        .h2{
-            color: #222222;
-            font-size: 24;
-            text-align: center;
-            margin: 20 0 20 0;
+    .global-container {
+        .container {
+            background-color: #FF5C5C;
+            padding: 16;
+
+            .h2 {
+                color: #ffffff;
+                font-size: 24;
+                text-align: center;
+                margin: 30 0 10 0;
+            }
+
+            .p {
+                color: #ffffff;
+                font-size: 15;
+                margin: 10 0 20 0;
+                text-align: center;
+            }
+            .logo {
+                margin: 15;
+                width: 100;
+                height: 150;
+            }
+            .button {
+                background-color: #ffffff;
+            }
         }
-        .p{
-            color: #222222;
-            font-size: 15;
-            margin: 20 0 20 0;
-        }
-        .logo{
-            margin: 15;
-        }
-        .img-g{
-            margin: 5 5 5 0;
-        }
-        .img-d{
-            margin: 5 0 5 5;
-        }
-        .container_shortcut{
+
+        .container_shortcut {
+            margin-top: 20;
             margin-bottom: 20;
+
+            .h3 {
+                width: 100%;
+                color: #4D4D4D;
+                font-size: 20;
+                text-align: center;
+                margin: 0 0 20 0;
+            }
+            .img {
+                height: 100;
+            }
+            .img-g {
+                margin: 5 5 5 0;
+            }
+            .img-d {
+                margin: 5 0 5 5;
+            }
+            .baseline {
+                text-align: center;
+            }
         }
     }
+
 </style>

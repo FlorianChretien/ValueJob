@@ -1,5 +1,5 @@
 <template>
-    <Page>
+    <Page actionBarHidden="true">
         <ActionBar title="Profil"/>
         <StackLayout>
             <Label text="Profil.." />

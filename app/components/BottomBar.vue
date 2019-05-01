@@ -4,23 +4,23 @@
                v-bind:labelVisibility="labelVisibility"
                v-on:loaded="barLoaded">
         <BottomBarItem
-                icon="~/assets/images/icones/ic_metier.png"
+                icon="~/assets/images/icones/ic_metier@2x.png"
                 title="Métier"
         >
         </BottomBarItem>
         <BottomBarItem
-                icon="~/assets/images/icones/ic_statistique.png"
+                icon="~/assets/images/icones/ic_statistique@2x.png"
                 title="Statistique"
         >
         </BottomBarItem>
         <BottomBarItem
-                icon="~/assets/images/icones/ic_job.png"
+                icon="~/assets/images/icones/ic_job@2x.png"
                 badge="3"
                 title="Job"
         >
         </BottomBarItem>
         <BottomBarItem
-                icon="~/assets/images/icones/ic_profil.png"
+                icon="~/assets/images/icones/ic_profil@2x.png"
                 title="Profil"
         >
         </BottomBarItem>
@@ -51,22 +51,22 @@
                     case 0:
                         this.$navigateTo(HomeMetier, {
                             frame: "rootFrame"
-                        })
+                        });
                         break;
                     case 1:
                         this.$navigateTo(Statistique, {
                             frame: "rootFrame"
-                        })
+                        });
                         break;
                     case 2:
                         this.$navigateTo(Job, {
                             frame: "rootFrame"
-                        })
+                        });
                         break;
                     case 3:
                         this.$navigateTo(Profil, {
                             frame: "rootFrame"
-                        })
+                        });
                         break;
                 }
             },
@@ -79,9 +79,9 @@
 
 <style scoped>
     BottomBar {
-        inactive-tint-color: #6082c3;
+        inactive-tint-color: #E0E0E0;
         active-tint-color: #FFFFFF;
-        bar-background-color: #475a9f;
+        bar-background-color: #4D4D4D;
         badge-background-color: #222222;
     }
 </style>

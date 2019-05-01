@@ -29,8 +29,7 @@
                 this.$navigateTo(HomeMetier, {
                     frame: "rootFrame"
                 });
-                console.log('changement de page');
-            }, 1000);
+            }, 400);
         }
     }
 </script>
