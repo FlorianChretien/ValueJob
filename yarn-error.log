@@ -1,0 +1,76 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add axios
+
+PATH: 
+  /Users/Florian/anaconda3/bin:/Users/Florian/anaconda/bin:/usr/local/Cellar/php/7.2.8/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/opt/X11/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/Florian/.rvm/bin
+
+Yarn version: 
+  1.15.2
+
+Node version: 
+  10.15.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/Users/Florian/Desktop/ValueJob/node_modules/@vue/devtools/node_modules'
+
+npm manifest: 
+  {
+    "name": "valuejob",
+    "version": "1.0.0",
+    "description": "A native application built with NativeScript-Vue",
+    "author": "Florian Chrétien <f.chretien@oenodata.fr>",
+    "license": "MIT",
+    "nativescript": {
+      "id": "org.nativescript.application",
+      "tns-ios": {
+        "version": "5.0.0"
+      },
+      "tns-android": {
+        "version": "5.0.0"
+      }
+    },
+    "dependencies": {
+      "@vue/devtools": "^5.0.7",
+      "nativescript-bottombar": "^4.0.0-rc1.2",
+      "nativescript-gradient": "^2.0.1",
+      "nativescript-socketio": "^3.2.1",
+      "nativescript-theme-core": "^1.0.4",
+      "nativescript-toasty": "^1.3.0",
+      "nativescript-ui-sidedrawer": "^6.0.0",
+      "nativescript-vue": "^2.0.0",
+      "nativescript-vue-devtools": "^1.2.0",
+      "tns-core-modules": "^5.0.2",
+      "vuex": "^3.0.1"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.0.0",
+      "@babel/preset-env": "^7.0.0",
+      "babel-loader": "^8.0.2",
+      "babel-traverse": "6.26.0",
+      "babel-types": "6.26.0",
+      "babylon": "6.18.0",
+      "clean-webpack-plugin": "^0.1.19",
+      "copy-webpack-plugin": "^4.5.2",
+      "css-loader": "^1.0.0",
+      "lazy": "1.0.11",
+      "nativescript-dev-webpack": "next",
+      "nativescript-vue-template-compiler": "^2.0.0",
+      "nativescript-worker-loader": "~0.9.0",
+      "node-sass": "^4.9.2",
+      "sass-loader": "^7.1.0",
+      "terser-webpack-plugin": "^1.1.0",
+      "vue-loader": "^15.2.6",
+      "webpack": "^4.16.4",
+      "webpack-bundle-analyzer": "~2.13.1",
+      "webpack-cli": "^3.1.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

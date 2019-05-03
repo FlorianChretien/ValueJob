@@ -4,23 +4,23 @@
                v-bind:labelVisibility="labelVisibility"
                v-on:loaded="barLoaded">
         <BottomBarItem
-                icon="~/assets/images/icones/ic_metier@2x.png"
+                icon="~/assets/images/icones/ic_metier@3x.png"
                 title="Métier"
         >
         </BottomBarItem>
         <BottomBarItem
-                icon="~/assets/images/icones/ic_statistique@2x.png"
+                icon="~/assets/images/icones/ic_statistique@3x.png"
                 title="Statistique"
         >
         </BottomBarItem>
         <BottomBarItem
-                icon="~/assets/images/icones/ic_job@2x.png"
+                icon="~/assets/images/icones/ic_job@3x.png"
                 badge="3"
                 title="Job"
         >
         </BottomBarItem>
         <BottomBarItem
-                icon="~/assets/images/icones/ic_profil@2x.png"
+                icon="~/assets/images/icones/ic_profil@3x.png"
                 title="Profil"
         >
         </BottomBarItem>

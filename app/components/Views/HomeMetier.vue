@@ -5,24 +5,24 @@
                 <FlexboxLayout flexDirection="column" class="container">
                     <Image alignSelf="center" src="~/assets/images/logo.png" class="logo"/>
                     <Label textWrap="true" class="h2" text="Découvrez votre véritable valeur sur le marché du travail"/>
-                    <Label textWrap="true" class="p" text="Gratuit et communautaire, Value Job a pour objectifs d'être un outil d'aide aux employés, chômeurs et étudiants qui recherche un ou leur métier. Salaires, Définitions, Formations mise à jour régulèriement grâce à la communauté et à diverses API basé sur l'emploi en 2019."/>
+                    <Label textWrap="true" class="p" text="Gratuit et communautaire, Value Job a pour objectif d'être un outil d'aide aux employés, chômeurs et étudiants qui recherchent un ou leur métier. Salaires, Définitions, Formations mise à jour régulèriement grâce à la communauté et à diverses API basés sur l'emploi en 2019."/>
                     <Button class="button" text="Chercher un métier" @tap="onButtonTap"/>
                 </FlexboxLayout>
                 <FlexboxLayout flexWrap="wrap" justifyContent="space-around" class="container_shortcut">
                     <Label textWrap="true" class="h3" text="Raccourci métier"/>
-                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around">
+                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around" @tap="onMetierTap('BOULANGER')">
                         <Image src="~/assets/images/metier/boulanger.jpg" class="img img-g"/>
                         <Label textWrap="true" class="baseline" text="Boulanger"/>
                     </FlexboxLayout>
-                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around">
+                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around" @tap="onMetierTap('DEVELOPPEUR WEB')">
                         <Image src="~/assets/images/metier/developpeur_web.jpg" class="img img-d"/>
                         <Label textWrap="true" class="baseline" text="Développeur Web"/>
                     </FlexboxLayout>
-                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around">
+                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around" @tap="onMetierTap('MEDECIN GENERALISTE')">
                         <Image src="~/assets/images/metier/docteur.jpg" class="img img-g"/>
                         <Label textWrap="true" class="baseline" text="Médecin généraliste"/>
                     </FlexboxLayout>
-                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around">
+                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around" @tap="onMetierTap('ELEVEUR')">
                         <Image src="~/assets/images/metier/eleveur.jpg" class="img img-d"/>
                         <Label textWrap="true" class="baseline" text="Éleveur"/>
                     </FlexboxLayout>
@@ -33,16 +33,26 @@
 </template>
 
 <script>
-    import SearchMetier from "@/components/Views/SearchMetier.vue";
+    import SearchMetier from '@/components/Views/SearchMetier.vue';
+    import Metier from '@/components/Views/Metier.vue';
 
     export default {
         components: {
             SearchMetier
         },
         methods: {
-            onButtonTap() {
+            onButtonTap () {
                 this.$navigateTo(SearchMetier, {
                     frame: "rootFrame"
+                });
+            },
+            onMetierTap (MetierTap) {
+                console.log(MetierTap);
+                this.$navigateTo(Metier, {
+                    frame: "rootFrame",
+                    props: {
+                        shortcut: MetierTap
+                    }
                 });
             }
         }
@@ -101,6 +111,7 @@
             }
             .baseline {
                 text-align: center;
+                font-size: 12;
             }
         }
     }
