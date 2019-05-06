@@ -4181,6 +4181,13 @@ nativescript-toasty@^1.3.0:
   resolved "https://registry.yarnpkg.com/nativescript-toasty/-/nativescript-toasty-1.3.0.tgz#463d769bee47d9a778034e259ebd5f524bc1ae40"
   integrity sha512-KMC6nGh+ZKC5+F5i98oCIRx8+eNqGFTzcgTh8c8RZy7EkhDk81z6C1JjX57F/fhWhfx6eaNHymi2v4CqjT2kxA==
 
+nativescript-ui-chart@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/nativescript-ui-chart/-/nativescript-ui-chart-4.0.2.tgz#ca53c340da7737c4bb918cb5322175d5b606a9f1"
+  integrity sha512-duh6gldbRpm9cOB4wa+K1GHHGEgRmagZQrJ6DNEmp8NvOY4mcPnBy+aHH5sbhU2ThVlMPcFSeyt+aT2zsetc1w==
+  dependencies:
+    nativescript-ui-core "~2.0.0"
+
 nativescript-ui-core@~2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/nativescript-ui-core/-/nativescript-ui-core-2.0.1.tgz#c59fee4d714d5138460b7aa98df217f1e02b643e"

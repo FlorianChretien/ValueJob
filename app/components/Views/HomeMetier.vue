@@ -18,7 +18,7 @@
                         <Image src="~/assets/images/metier/developpeur_web.jpg" class="img img-d"/>
                         <Label textWrap="true" class="baseline" text="Développeur Web"/>
                     </FlexboxLayout>
-                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around" @tap="onMetierTap('MEDECIN GENERALISTE')">
+                    <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around" @tap="onMetierTap('MEDECIN')">
                         <Image src="~/assets/images/metier/docteur.jpg" class="img img-g"/>
                         <Label textWrap="true" class="baseline" text="Médecin généraliste"/>
                     </FlexboxLayout>
