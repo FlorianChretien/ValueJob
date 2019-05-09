@@ -1,39 +1,36 @@
 <template>
     <Page>
-
-        <RadCartesianChart>
-            <LinearAxis v-tkCartesianVerticalAxis horizontalLocation="Right"/>
-            <CategoricalAxis v-tkCartesianHorizontalAxis/>
-
-            <BarSeries v-tkCartesianSeries selectionMode="Series"
-                       :items="categoricalSource" categoryProperty="Country" valueProperty="Impact">
-            </BarSeries>
-        </RadCartesianChart>
-
-        <!-- <ActionBar :title="metier.nom">
-             <NavigationButton text="Go back" android.systemIcon="ic_menu_back" @tap="goBack"/>
-         </ActionBar>
-         <ScrollView orientation="vertical">
-             &lt;!&ndash;<FlexboxLayout flexDirection="column">
-                 <Label text="Salaire"/>
-                 <Label textWrap="true" class="h3" text="description"/>
-                 <Label textWrap="true" :text="metier.description.text"/>
-                 <Label textWrap="true" class="h3" text="compétences"/>
-                 <Label textWrap="true" :text="metier.competence.text"/>
-                 <Label textWrap="true" class="h3" text="formation"/>
-                 <Label textWrap="true" :text="metier.formation.text"/>
-                 <Label textWrap="true" class="h3" text="responsabilités et évolution"/>
-                 <Label textWrap="true" :text="metier.responsabilitesEvolution.text"/>
-             </FlexboxLayout>&ndash;&gt;
-
-         </ScrollView>-->
+        <ActionBar :title="metier.nom">
+            <NavigationButton text="Go back" android.systemIcon="ic_menu_back" @ta="goBack"/>
+        </ActionBar>
+        <ScrollView orientation="vertical">
+            <FlexboxLayout flexDirection="column">
+                <ActivityIndicator :busy="isBusy" class="activity-indicator"/>
+                <Label text="Salaire"/>
+                <GridLayout rows="*" height="1000px">
+                    <RadCartesianChart row="0">
+                        <BarSeries v-tkCartesianSeries :items="categoricalSource" categoryProperty="Country"
+                                   valueProperty="Amount"/>
+                        <CategoricalAxis v-tkCartesianHorizontalAxis/>
+                        <LinearAxis v-tkCartesianVerticalAxis/>
+                    </RadCartesianChart>
+                </GridLayout>
+                <Label textWrap="true" text="description"/>
+                <Label textWrap="true" :text="metier.description.text"/>
+                <Label textWrap="true" text="compétences"/>
+                <Label textWrap="true" :text="metier.competence.text"/>
+                <Label textWrap="true" text="formation"/>
+                <Label textWrap="true" :text="metier.formation.text"/>
+                <Label textWrap="true" text="responsabilités et évolution"/>
+                <Label textWrap="true" :text="metier.responsabilitesEvolution.text"/>
+            </FlexboxLayout>
+        </ScrollView>
     </Page>
 </template>
 
 <script>
-    import axios from 'axios'
     import HomeMetier from '@/components/Views/HomeMetier.vue'
-
+    
     export default {
         components: {
             HomeMetier
@@ -47,9 +44,10 @@
                     {Country: "Spain", Amount: 11, SecondVal: 19, ThirdVal: 24},
                     {Country: "USA", Amount: 18, SecondVal: 8, ThirdVal: 21}
                 ],
+                isBusy: true,
                 metier: {
                     id: 0,
-                    nom: "Erreur",
+                    nom: "Métier",
                     secteur: "",
                     salaire: {},
                     description: {},
@@ -69,9 +67,10 @@
                 });
             },
             loadData() {
-                axios
+                this.axios
                     .get('https://gist.githubusercontent.com/FlorianChretien/5042d45caf13404b4e9090c640c8798b/raw/2684e13058b544ba356e5da5f08b7b5d83a88f27/metiers.json')
                     .then((response) => {
+                        this.isBusy = false;
                         for (var key in response.data) {
                             for (var property in response.data[key]) {
                                 if (property === 'nom') {
