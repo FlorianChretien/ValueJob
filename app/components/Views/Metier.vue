@@ -1,59 +1,71 @@
 <template>
     <Page>
         <ActionBar :title="metier.nom">
-            <NavigationButton text="Go back" android.systemIcon="ic_menu_back" @ta="goBack"/>
+            <NavigationButton text="Go back" android.systemIcon="ic_menu_back" @tap="goBack"/>
         </ActionBar>
         <ScrollView orientation="vertical">
-            <FlexboxLayout flexDirection="column">
-                <ActivityIndicator :busy="isBusy" class="activity-indicator"/>
-                <Label text="Salaire"/>
-                <GridLayout rows="*" height="1000px">
-                    <RadCartesianChart row="0">
-                        <BarSeries v-tkCartesianSeries :items="categoricalSource" categoryProperty="Country"
-                                   valueProperty="Amount"/>
-                        <CategoricalAxis v-tkCartesianHorizontalAxis/>
-                        <LinearAxis v-tkCartesianVerticalAxis/>
-                    </RadCartesianChart>
-                </GridLayout>
-                <Label textWrap="true" text="description"/>
-                <Label textWrap="true" :text="metier.description.text"/>
-                <Label textWrap="true" text="compétences"/>
-                <Label textWrap="true" :text="metier.competence.text"/>
-                <Label textWrap="true" text="formation"/>
-                <Label textWrap="true" :text="metier.formation.text"/>
-                <Label textWrap="true" text="responsabilités et évolution"/>
-                <Label textWrap="true" :text="metier.responsabilitesEvolution.text"/>
-            </FlexboxLayout>
+            <StackLayout orientation="vertical">
+                <ActivityIndicator :busy="load.isBusy"/>
+                <FlexboxLayout class="global-container" flexDirection="column" :visibility="load.isVisible">
+                    <Label class="h3" text="Salaire"/>
+                    <Label class="h4" textWrap="true" text="Spécialisations"/>
+                    <FlexboxLayout flexDirection="wrap" flexWrap="wrap">
+                        <Button v-for="specialite in metier.specialite" :text="specialite" @tap="salaireSelect.specialite = specialite"/>
+                    </FlexboxLayout>
+                    <Label class="h4" textWrap="true" text="Villes"/>
+                    <FlexboxLayout flexDirection="wrap" flexWrap="wrap">
+                        <Button v-for="ville in metier.villes" :text="ville" @tap="salaireSelect.ville = ville" textWrap="false" />
+                    </FlexboxLayout>
+                    <GridLayout rows="*" class="radchart">
+                        <RadCartesianChart row="0" height="1000px">
+                            <BarSeries v-tkCartesianSeries :items="metier.salaire[salaireSelect.specialite][salaireSelect.ville]" categoryProperty="experience"
+                                       valueProperty="val1"/>
+                            <CategoricalAxis v-tkCartesianHorizontalAxis/>
+                            <LinearAxis v-tkCartesianVerticalAxis/>
+                        </RadCartesianChart>
+                    </GridLayout>
+                    <Label class="h3" textWrap="true" text="Description"/>
+                    <Label class="p" textWrap="true" :text="metier.description.text"/>
+                    <Label class="h3" textWrap="true" text="Compétences"/>
+                    <Label class="p" textWrap="true" :text="metier.competence.text"/>
+                    <Label class="h3" textWrap="true" text="Formation"/>
+                    <Label class="p" textWrap="true" :text="metier.formation.text"/>
+                    <Label class="h3" textWrap="true" text="Responsabilités et évolution"/>
+                    <Label class="p" textWrap="true" :text="metier.responsabilitesEvolution.text"/>
+                </FlexboxLayout>
+            </StackLayout>
         </ScrollView>
     </Page>
 </template>
 
 <script>
     import HomeMetier from '@/components/Views/HomeMetier.vue'
-    
+
     export default {
         components: {
             HomeMetier
         },
         data() {
             return {
-                categoricalSource: [
-                    {Country: "Germany", Amount: 15, SecondVal: 14, ThirdVal: 24},
-                    {Country: "France", Amount: 13, SecondVal: 23, ThirdVal: 25},
-                    {Country: "Bulgaria", Amount: 24, SecondVal: 17, ThirdVal: 23},
-                    {Country: "Spain", Amount: 11, SecondVal: 19, ThirdVal: 24},
-                    {Country: "USA", Amount: 18, SecondVal: 8, ThirdVal: 21}
-                ],
-                isBusy: true,
+                load: {
+                    isBusy: true,
+                    isVisible: 'collapsed'
+                },
                 metier: {
                     id: 0,
                     nom: "Métier",
                     secteur: "",
-                    salaire: {},
+                    specialite: [],
+                    villes: [],
+                    salaire: {"specialite": { "all": [{"experience": "toto", "val1": 30, "val2": 10}] }},
                     description: {},
                     competence: {},
                     formation: {},
                     responsabilitesEvolution: {}
+                },
+                salaireSelect: {
+                    specialite: "specialite",
+                    ville: "all"
                 }
             }
         },
@@ -68,47 +80,32 @@
             },
             loadData() {
                 this.axios
-                    .get('https://gist.githubusercontent.com/FlorianChretien/5042d45caf13404b4e9090c640c8798b/raw/2684e13058b544ba356e5da5f08b7b5d83a88f27/metiers.json')
+                    .get('https://gist.githubusercontent.com/FlorianChretien/5042d45caf13404b4e9090c640c8798b/raw/c19292dd1fd0cf76d68320476bb86dcf60b5d0e9/metiers.json')
                     .then((response) => {
-                        this.isBusy = false;
-                        for (var key in response.data) {
-                            for (var property in response.data[key]) {
-                                if (property === 'nom') {
-                                    if (response.data[key][property] === this.shortcut) {
-                                        for (var property in response.data[key]) {
-                                            if (property === 'id') {
-                                                this.metier.id = response.data[key][property];
-                                            }
-                                            if (property === 'nom') {
-                                                this.metier.nom = response.data[key][property];
-                                            }
-                                            if (property === 'secteur') {
-                                                this.metier.secteur = response.data[key][property];
-                                            }
-                                            if (property === 'salaire') {
-                                                this.metier.salaire = response.data[key][property];
-                                            }
-                                            if (property === 'description') {
-                                                this.metier.description = response.data[key][property];
-                                            }
-                                            if (property === 'competence') {
-                                                this.metier.competence = response.data[key][property];
-                                            }
-                                            if (property === 'formation') {
-                                                this.metier.formation = response.data[key][property];
-                                            }
-                                            if (property === 'responsabilitesEvolution') {
-                                                this.metier.responsabilitesEvolution = response.data[key][property];
+                        setTimeout(() => {
+                            this.load.isBusy = false;
+                            this.load.isVisible = 'visible';
+                            for (var key in response.data) {
+                                for (var property in response.data[key]) {
+                                    if (property === 'nom') {
+                                        if (response.data[key][property] === this.shortcut) {
+                                            for (var property in response.data[key]) {
+                                                this.metier[property] = response.data[key][property];
                                             }
                                         }
                                     }
                                 }
                             }
-                        }
+                            this.salaireSelect.specialite = this.metier.specialite[0];
+                            this.salaireSelect.ville = "all";
+                        }, 200)
                     })
                     .catch((error) => {
                         console.log(error)
                     })
+            },
+            onButtonTap() {
+                console.log("Button was pressed");
             }
         },
         mounted() {
@@ -117,3 +114,25 @@
         }
     }
 </script>
+
+<style scoped lang="scss">
+    .global-container {
+        margin: 5;
+
+        .h3 {
+            font-size: 20;
+            color: #222222;
+            margin: 15 0 10 0;
+        }
+
+        .h4 {
+            font-size: 18;
+            color: #343434;
+            margin: 8 0 8 0;
+        }
+
+        .p {
+            font-size: 16;
+        }
+    }
+</style>

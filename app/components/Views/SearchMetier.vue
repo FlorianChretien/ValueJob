@@ -4,7 +4,7 @@
             <NavigationButton text="Go back" android.systemIcon="ic_menu_back" @tap="goBack" />
         </ActionBar>
         <StackLayout>
-            <SearchBar hint="Lancez vous dans la recherche d'un métier !" :text="searchPhrase" @submit="onSearchSubmit"/>
+            <SearchBar hint="Lancez vous dans la recherche d'un métier !" :text="searchPhrase" dismissSoftInput="false" @submit="onSearchSubmit"/>
         </StackLayout>
     </Page>
 </template>
