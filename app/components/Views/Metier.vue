@@ -10,11 +10,11 @@
                     <Label class="h3" text="Salaire"/>
                     <Label class="h4" textWrap="true" text="Spécialisations"/>
                     <FlexboxLayout flexDirection="wrap" flexWrap="wrap">
-                        <Button v-for="specialite in metier.specialite" :text="specialite" @tap="salaireSelect.specialite = specialite"/>
+                        <!--<Button v-for="specialite in metier.specialite" :text="specialite" @tap="salaireSelect.specialite = specialite"/>-->
                     </FlexboxLayout>
                     <Label class="h4" textWrap="true" text="Villes"/>
                     <FlexboxLayout flexDirection="wrap" flexWrap="wrap">
-                        <Button v-for="ville in metier.villes" :text="ville" @tap="salaireSelect.ville = ville" textWrap="false" />
+                        <!--<Button v-for="ville in metier.villes" :text="ville" @tap="salaireSelect.ville = ville" textWrap="false" />-->
                     </FlexboxLayout>
                     <GridLayout rows="*" class="radchart">
                         <RadCartesianChart row="0" height="1000px">
@@ -79,11 +79,16 @@
                 });
             },
             loadData() {
+                console.log('toto');
                 this.axios
                     .get('https://gist.githubusercontent.com/FlorianChretien/5042d45caf13404b4e9090c640c8798b/raw/c19292dd1fd0cf76d68320476bb86dcf60b5d0e9/metiers.json')
                     .then((response) => {
+                        console.log('toto');
                         setTimeout(() => {
+                            console.log(this.load.isBusy);
                             this.load.isBusy = false;
+                            console.log(this.load.isBusy);
+
                             this.load.isVisible = 'visible';
                             for (var key in response.data) {
                                 for (var property in response.data[key]) {
@@ -101,7 +106,7 @@
                         }, 200)
                     })
                     .catch((error) => {
-                        console.log(error)
+                        console.log(error);
                     })
             },
             onButtonTap() {
@@ -110,7 +115,7 @@
         },
         mounted() {
             console.log(this.shortcut);
-            this.loadData()
+            this.loadData();
         }
     }
 </script>

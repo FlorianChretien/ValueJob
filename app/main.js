@@ -12,7 +12,7 @@ Vue.registerElement('BottomBar', () => require('nativescript-bottombar').BottomB
 Vue.registerElement('BottomBarItem', () => require('nativescript-bottombar').BottomBarItem);
 
 if(TNS_ENV !== 'production') {
-  Vue.use(VueDevtools, { host: '10.18.72.55' })
+  /*Vue.use(VueDevtools, { host: '192.168.0.163' })*/
 }
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = (TNS_ENV === 'production');

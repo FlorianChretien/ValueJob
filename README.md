@@ -95,4 +95,8 @@ tns debug <platform> --bundle
 
 # Build, watch for changes and run the application
 tns run ios --bundle --device iPhone Xs Max
+
+API 28 defectueuse. Trash platforme et rebuild sur iphone en premier pour une raison obscure (peut etre parce que j'ai un mac). 
+Update1 : Visiblement axios ne fonctionne sur android que si ios est lancé.
+Update2 : Ca fonctionne mais il lui faut beaucoup de temps (j'étais revenu sur la page d'accueil) wtf 
 ```
