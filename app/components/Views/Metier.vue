@@ -1,29 +1,34 @@
 <template>
     <Page>
-        <ActionBar :title="metier.nom">
-            <NavigationButton text="Go back" android.systemIcon="ic_menu_back" @tap="goBack"/>
+        <ActionBar class="actionBar">
+            <FlexboxLayout flexDirection="wrap">
+                <Image src="~/assets/images/back_white.png" width="28" height="28" @tap="goBack" class="icon_back" />
+                <Label :text="metier.nom" fontSize="24" color="#FFFFFF" class="title" width="80%"></Label>
+            </FlexboxLayout>
         </ActionBar>
         <ScrollView orientation="vertical">
-            <StackLayout orientation="vertical">
-                <ActivityIndicator :busy="load.isBusy" />
+            <StackLayout flexDirection="column">
+                <FlexboxLayout width="300" :visibility="load.loaderVisibility" justify-content="center">
+                    <ActivityIndicator :busy="load.isBusy" />
+                </FlexboxLayout>
+
                 <FlexboxLayout class="global-container" flexDirection="column" :visibility="load.isVisible">
-                    <Label class="h3" text="Salaire"/>
+                    <Label class="h3" text="Salaire" />
                     <Label class="h4" textWrap="true" text="Spécialisations"/>
                     <FlexboxLayout flexDirection="wrap" flexWrap="wrap">
-                        <Button v-for="specialite in metier.specialite" :text="specialite" @tap="salaireSelect.specialite = specialite"/>
+                        <Button v-for="specialite in metier.specialite" :text="specialite" @tap="onButtonTapSpecialite(specialite)" />
                     </FlexboxLayout>
                     <Label class="h4" textWrap="true" text="Villes"/>
                     <FlexboxLayout flexDirection="wrap" flexWrap="wrap">
-                        <Button v-for="ville in metier.villes" :text="ville" @tap="salaireSelect.ville = ville" textWrap="false" />
+                        <Button v-for="ville in metier.villes" :text="ville" @tap="salaireSelect.ville = ville" />
                     </FlexboxLayout>
                     <GridLayout rows="*" class="radchart">
                         <RadCartesianChart row="0" height="1000px">
                             <CategoricalAxis v-tkCartesianHorizontalAxis/>
-                            <LinearAxis v-tkCartesianVerticalAxis/>
+                            <LinearAxis v-tkCartesianVerticalAxis :minimum="metier.salaire.minimum" :maximum="metier.salaire.maximum" />
 
                             <SplineAreaSeries v-tkCartesianSeries
                                         seriesName="haut"
-                                        legendTitle="Vanished"
                                         :items="metier.salaire[salaireSelect.specialite][salaireSelect.ville]"
                                         categoryProperty="experience"
                                         showLabels="true"
@@ -56,9 +61,6 @@
                     <Label class="p" textWrap="true" :text="metier.formation.text"/>
                     <Label class="h3" textWrap="true" text="Responsabilités et évolution"/>
                     <Label class="p" textWrap="true" :text="metier.responsabilitesEvolution.text"/>
-                    <StackLayout orientation="vertical" width="210" height="210" backgroundColor="lightgray" v-for="js in json">
-                        <Label :text="js.title" width="70" height="50" backgroundColor="red" />
-                    </StackLayout>
                 </FlexboxLayout>
             </StackLayout>
         </ScrollView>
@@ -77,7 +79,8 @@
             return {
                 load: {
                     isBusy: true,
-                    isVisible: 'collapsed'
+                    isVisible: 'collapsed',
+                    loaderVisibility: 'visible'
                 },
                 metier: {
                     id: 0,
@@ -85,7 +88,7 @@
                     secteur: "",
                     specialite: [],
                     villes: [],
-                    salaire: {"specialite": { "all": [{"experience": "toto", "val1": 30, "val2": 10}] }},
+                    salaire: {"minimum": 15000, "maximum": 35000,"specialite": { "all": [{"experience": "toto", "val1": 30, "val2": 10}] }},
                     description: {},
                     competence: {},
                     formation: {},
@@ -94,8 +97,7 @@
                 salaireSelect: {
                     specialite: "specialite",
                     ville: "all"
-                },
-                json: {}
+                }
             }
         },
         props: {
@@ -117,6 +119,7 @@
                     .then((response) => {
                         this.load.isBusy = false;
                         this.load.isVisible = 'visible';
+                        this.load.loaderVisibility = 'collapsed';
                         for (let property in response.data) {
                             this.metier[property] = response.data[property];
                         }
@@ -126,8 +129,10 @@
                         console.log(error);
                     });
             },
-            onButtonTap() {
-                console.log("Button was pressed");
+            onButtonTapSpecialite(specialite, args) {
+                /*const btn = args.object;
+                btn.backgroundColor = "#ff1228";*/
+                this.salaireSelect.specialite = specialite;
             }
         },
         mounted() {
@@ -138,17 +143,27 @@
 </script>
 
 <style scoped lang="scss">
+    .actionBar {
+        background-color: #FF5C5C;
+        .icon_back {
+            text-align: left;
+        }
+        .title {
+            text-align: center;
+        }
+    }
     .global-container {
-        margin: 5;
+        margin: 0 10 20 10;
 
         .h3 {
             font-size: 20;
             color: #222222;
-            margin: 15 0 10 0;
+            margin: 15 0 5 0;
+            font-weight: bold;
         }
 
         .h4 {
-            font-size: 18;
+            font-size: 14;
             color: #343434;
             margin: 8 0 8 0;
         }
