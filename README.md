@@ -99,4 +99,6 @@ tns run ios --bundle --device iPhone Xs Max
 API 28 defectueuse. Trash platforme et rebuild sur iphone en premier pour une raison obscure (peut etre parce que j'ai un mac). 
 Update1 : Visiblement axios ne fonctionne sur android que si ios est lancé.
 Update2 : Ca fonctionne mais il lui faut beaucoup de temps (j'étais revenu sur la page d'accueil) wtf 
+Update3 : Ca vient de l'émulateur je sais le problème certainement le tns core mais d'après ce que j'ai lu c'est l'incompatibilité des outils de devs de nativescript (vue devtools par ex) et android 9 Pie
+Fin de l'histoire : l'emulateur android ne supporte pas l'https (android 9 en tout cas)
 ```

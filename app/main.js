@@ -1,12 +1,9 @@
 import Vue from 'nativescript-vue'
 import App from './components/App'
 import store from './store'
-import VueDevtools from 'nativescript-vue-devtools'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+/*import VueDevtools from 'nativescript-vue-devtools'*/
 import RadCartesianChart from 'nativescript-ui-chart/vue'
 Vue.use(RadCartesianChart);
-Vue.use(VueAxios, axios);
 
 Vue.registerElement('BottomBar', () => require('nativescript-bottombar').BottomBar);
 Vue.registerElement('BottomBarItem', () => require('nativescript-bottombar').BottomBarItem);

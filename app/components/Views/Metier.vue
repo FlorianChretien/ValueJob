@@ -5,23 +5,47 @@
         </ActionBar>
         <ScrollView orientation="vertical">
             <StackLayout orientation="vertical">
-                <ActivityIndicator :busy="load.isBusy"/>
+                <ActivityIndicator :busy="load.isBusy" />
                 <FlexboxLayout class="global-container" flexDirection="column" :visibility="load.isVisible">
                     <Label class="h3" text="Salaire"/>
                     <Label class="h4" textWrap="true" text="Spécialisations"/>
                     <FlexboxLayout flexDirection="wrap" flexWrap="wrap">
-                        <!--<Button v-for="specialite in metier.specialite" :text="specialite" @tap="salaireSelect.specialite = specialite"/>-->
+                        <Button v-for="specialite in metier.specialite" :text="specialite" @tap="salaireSelect.specialite = specialite"/>
                     </FlexboxLayout>
                     <Label class="h4" textWrap="true" text="Villes"/>
                     <FlexboxLayout flexDirection="wrap" flexWrap="wrap">
-                        <!--<Button v-for="ville in metier.villes" :text="ville" @tap="salaireSelect.ville = ville" textWrap="false" />-->
+                        <Button v-for="ville in metier.villes" :text="ville" @tap="salaireSelect.ville = ville" textWrap="false" />
                     </FlexboxLayout>
                     <GridLayout rows="*" class="radchart">
                         <RadCartesianChart row="0" height="1000px">
-                            <BarSeries v-tkCartesianSeries :items="metier.salaire[salaireSelect.specialite][salaireSelect.ville]" categoryProperty="experience"
-                                       valueProperty="val1"/>
                             <CategoricalAxis v-tkCartesianHorizontalAxis/>
                             <LinearAxis v-tkCartesianVerticalAxis/>
+
+                            <SplineAreaSeries v-tkCartesianSeries
+                                        seriesName="haut"
+                                        legendTitle="Vanished"
+                                        :items="metier.salaire[salaireSelect.specialite][salaireSelect.ville]"
+                                        categoryProperty="experience"
+                                        showLabels="true"
+                                        valueProperty="val2">
+                                <PointLabelStyle v-tkLineLabelStyle margin="10" fontStyle="Bold" fillColor="#4D4D4D" textSize="10" textColor="White"></PointLabelStyle>
+                            </SplineAreaSeries>
+
+                            <AreaSeries v-tkCartesianSeries
+                                       seriesName="bas"
+                                       :items="metier.salaire[salaireSelect.specialite][salaireSelect.ville]"
+                                       categoryProperty="experience"
+                                       showLabels="true"
+                                       valueProperty="val1">
+                                <PointLabelStyle v-tkLineLabelStyle margin="10" fontStyle="Bold" fillColor="#FF5C5C" textSize="10" textColor="White"></PointLabelStyle>
+                            </AreaSeries>
+
+                            <Palette v-tkCartesianPalette seriesName="bas">
+                                <PaletteEntry v-tkCartesianPaletteEntry fillColor="#FFFFFF" strokeColor="#FF5C5C"></PaletteEntry>
+                            </Palette>
+                            <Palette v-tkCartesianPalette seriesName="haut">
+                                <PaletteEntry v-tkCartesianPaletteEntry fillColor="#FF5C5C" strokeColor="#FF5C5C"></PaletteEntry>
+                            </Palette>
                         </RadCartesianChart>
                     </GridLayout>
                     <Label class="h3" textWrap="true" text="Description"/>
@@ -32,6 +56,9 @@
                     <Label class="p" textWrap="true" :text="metier.formation.text"/>
                     <Label class="h3" textWrap="true" text="Responsabilités et évolution"/>
                     <Label class="p" textWrap="true" :text="metier.responsabilitesEvolution.text"/>
+                    <StackLayout orientation="vertical" width="210" height="210" backgroundColor="lightgray" v-for="js in json">
+                        <Label :text="js.title" width="70" height="50" backgroundColor="red" />
+                    </StackLayout>
                 </FlexboxLayout>
             </StackLayout>
         </ScrollView>
@@ -39,6 +66,7 @@
 </template>
 
 <script>
+    import axios from "axios";
     import HomeMetier from '@/components/Views/HomeMetier.vue'
 
     export default {
@@ -66,7 +94,8 @@
                 salaireSelect: {
                     specialite: "specialite",
                     ville: "all"
-                }
+                },
+                json: {}
             }
         },
         props: {
@@ -79,35 +108,23 @@
                 });
             },
             loadData() {
-                console.log('toto');
-                this.axios
-                    .get('https://gist.githubusercontent.com/FlorianChretien/5042d45caf13404b4e9090c640c8798b/raw/c19292dd1fd0cf76d68320476bb86dcf60b5d0e9/metiers.json')
+                axios
+                    .get('https://vast-taiga-97693.herokuapp.com/metier', {
+                        params: {
+                            nom: this.shortcut
+                        }
+                    })
                     .then((response) => {
-                        console.log('toto');
-                        setTimeout(() => {
-                            console.log(this.load.isBusy);
-                            this.load.isBusy = false;
-                            console.log(this.load.isBusy);
-
-                            this.load.isVisible = 'visible';
-                            for (var key in response.data) {
-                                for (var property in response.data[key]) {
-                                    if (property === 'nom') {
-                                        if (response.data[key][property] === this.shortcut) {
-                                            for (var property in response.data[key]) {
-                                                this.metier[property] = response.data[key][property];
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            this.salaireSelect.specialite = this.metier.specialite[0];
-                            this.salaireSelect.ville = "all";
-                        }, 200)
+                        this.load.isBusy = false;
+                        this.load.isVisible = 'visible';
+                        for (let property in response.data) {
+                            this.metier[property] = response.data[property];
+                        }
+                        this.salaireSelect.specialite = this.metier.specialite[0];
                     })
                     .catch((error) => {
                         console.log(error);
-                    })
+                    });
             },
             onButtonTap() {
                 console.log("Button was pressed");
