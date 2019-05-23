@@ -6,9 +6,12 @@
                 <Label text="Recherche Métier" fontSize="24" color="#FFFFFF" class="title" width="80%"></Label>
             </FlexboxLayout>
         </ActionBar>
+        <StackLayout :visibility="load.loaderVisibility" justify-content="center">
+            <ActivityIndicator :busy="load.isBusy" />
+        </StackLayout>
         <ScrollView orientation="vertical">
             <StackLayout>
-                <SearchBar hint="Lancez vous dans la recherche d'un métier !" :text="searchMetier" dismissSoftInput="false" @submit="onSearchSubmit"/>
+                <SearchBar hint="Lancez vous dans la recherche d'un métier !" :text="searchMetier" dismissSoftInput="false" @textChange="onSearchSubmit"/>
                 <FlexboxLayout
                         flexDirection="column"
                         v-for="(metier, index) in listeMetiers"
@@ -33,11 +36,17 @@
         data() {
             return {
                 searchMetier: '',
-                listeMetiers: {}
+                listeMetiers: {},
+                load: {
+                    isBusy: false,
+                    loaderVisibility: 'collapsed'
+                }
             }
         },
         methods: {
             onSearchSubmit(args) {
+                this.load.isBusy = true;
+                this.load.loaderVisibility = 'visible';
                 let search = args.object.text;
                 axios
                     .get('https://vast-taiga-97693.herokuapp.com/metiersearch', {
@@ -46,7 +55,13 @@
                         }
                     })
                     .then((response) => {
-                        this.listeMetiers = response.data;
+                        if (response.data.length === 0) {
+                            this.listeMetiers = [{nom:'Pas de résultats'}];
+                        } else {
+                            this.listeMetiers = response.data;
+                        }
+                        this.load.isBusy = false;
+                        this.load.loaderVisibility = 'collapsed';
                     })
                     .catch((error) => {
                         console.log(error)

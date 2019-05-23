@@ -61,6 +61,8 @@
                     <Label class="p" textWrap="true" :text="metier.formation.text"/>
                     <Label class="h3" textWrap="true" text="Responsabilités et évolution"/>
                     <Label class="p" textWrap="true" :text="metier.responsabilitesEvolution.text"/>
+                    <Button text="Éditer ce métier" @tap="tap" class="editer_metier"></Button>
+                    <Button text="Partager votre salaire (anonyme)" @tap="tap"></Button>
                 </FlexboxLayout>
             </StackLayout>
         </ScrollView>
@@ -133,6 +135,9 @@
                 /*const btn = args.object;
                 btn.backgroundColor = "#ff1228";*/
                 this.salaireSelect.specialite = specialite;
+            },
+            tap() {
+
             }
         },
         mounted() {
@@ -170,6 +175,10 @@
 
         .p {
             font-size: 16;
+        }
+
+        .editer_metier{
+            margin: 30 0 10 0;
         }
     }
 </style>
