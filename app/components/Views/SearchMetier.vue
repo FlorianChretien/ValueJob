@@ -6,12 +6,12 @@
                 <Label text="Recherche Métier" fontSize="24" color="#FFFFFF" class="title" width="80%"></Label>
             </FlexboxLayout>
         </ActionBar>
-        <StackLayout :visibility="load.loaderVisibility" justify-content="center">
-            <ActivityIndicator :busy="load.isBusy" />
-        </StackLayout>
         <ScrollView orientation="vertical">
             <StackLayout>
                 <SearchBar hint="Lancez vous dans la recherche d'un métier !" :text="searchMetier" dismissSoftInput="false" @textChange="onSearchSubmit"/>
+                <StackLayout :visibility="load.loaderVisibility" justify-content="center">
+                    <ActivityIndicator :busy="load.isBusy" />
+                </StackLayout>
                 <FlexboxLayout
                         flexDirection="column"
                         v-for="(metier, index) in listeMetiers"
@@ -45,27 +45,30 @@
         },
         methods: {
             onSearchSubmit(args) {
-                this.load.isBusy = true;
-                this.load.loaderVisibility = 'visible';
                 let search = args.object.text;
-                axios
-                    .get('https://vast-taiga-97693.herokuapp.com/metiersearch', {
-                        params: {
-                            nom: search.toUpperCase()
-                        }
-                    })
-                    .then((response) => {
-                        if (response.data.length === 0) {
-                            this.listeMetiers = [{nom:'Pas de résultats'}];
-                        } else {
-                            this.listeMetiers = response.data;
-                        }
-                        this.load.isBusy = false;
-                        this.load.loaderVisibility = 'collapsed';
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
+                console.log(search.length);
+                if (search.length >= 3) {
+                    this.load.isBusy = true;
+                    this.load.loaderVisibility = 'visible';
+                    axios
+                        .get('https://vast-taiga-97693.herokuapp.com/metiersearch', {
+                            params: {
+                                nom: search.toUpperCase()
+                            }
+                        })
+                        .then((response) => {
+                            if (response.data.length === 0) {
+                                this.listeMetiers = [{nom:'Pas de résultats'}];
+                            } else {
+                                this.listeMetiers = response.data;
+                            }
+                            this.load.isBusy = false;
+                            this.load.loaderVisibility = 'collapsed';
+                        })
+                        .catch((error) => {
+                            console.log(error)
+                        })
+                }
             },
             goBack () {
                 this.$navigateTo(HomeMetier, {

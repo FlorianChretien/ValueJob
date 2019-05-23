@@ -8,9 +8,9 @@
         </ActionBar>
         <ScrollView orientation="vertical">
             <StackLayout flexDirection="column">
-                <FlexboxLayout width="300" :visibility="load.loaderVisibility" justify-content="center">
+                <StackLayout :visibility="load.loaderVisibility" justify-content="center">
                     <ActivityIndicator :busy="load.isBusy" />
-                </FlexboxLayout>
+                </StackLayout>
 
                 <FlexboxLayout class="global-container" flexDirection="column" :visibility="load.isVisible">
                     <Label class="h3" text="Salaire" />
