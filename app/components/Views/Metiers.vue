@@ -72,10 +72,12 @@
 <script>
     import axios from "axios";
     import HomeMetier from '@/components/Views/HomeMetier.vue'
+    import Statistiques from '@/components/Views/Statistiques.vue'
 
     export default {
         components: {
-            HomeMetier
+            HomeMetier,
+            Statistiques
         },
         data() {
             return {
@@ -103,13 +105,20 @@
             }
         },
         props: {
-            shortcut: String
+            shortcut: String,
+            from: String
         },
         methods: {
             goBack() {
-                this.$navigateTo(HomeMetier, {
-                    frame: "rootFrame"
-                });
+                if (this.from === "Statistiques") {
+                    this.$navigateTo(Statistiques, {
+                        frame: "rootFrame"
+                    });
+                } else if (this.from === "HomeMetier") {
+                    this.$navigateTo(HomeMetier, {
+                        frame: "rootFrame"
+                    });
+                }
             },
             loadData() {
                 axios

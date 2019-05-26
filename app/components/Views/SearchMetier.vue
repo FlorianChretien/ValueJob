@@ -19,7 +19,7 @@
                         @tap="onTapMetier(metier.nom)"
                         class="container"
                 >
-                    <Label :text="metier.nom" class="h3" />
+                    <Label :text="metier.nom" textWrap="true" class="h3" />
                     <Label :text="metier.secteur" class="h4" />
                 </FlexboxLayout>
             </StackLayout>
@@ -30,7 +30,7 @@
 <script>
     import axios from 'axios';
     import HomeMetier from "@/components/Views/HomeMetier.vue";
-    import Metier from '@/components/Views/Metier.vue';
+    import Metiers from '@/components/Views/Metiers.vue';
 
     export default {
         data() {
@@ -47,7 +47,7 @@
             onSearchSubmit(args) {
                 let search = args.object.text;
                 console.log(search.length);
-                if (search.length >= 3) {
+                if (search.length >= 2) {
                     this.load.isBusy = true;
                     this.load.loaderVisibility = 'visible';
                     axios
@@ -68,6 +68,8 @@
                         .catch((error) => {
                             console.log(error)
                         })
+                } else {
+                    this.listeMetiers = {}
                 }
             },
             goBack () {

@@ -1,0 +1,64 @@
+{
+  "id": 25,
+  "nom": "CHEF DE CUISINE",
+  "secteur": "Hôtellerie, Restauration",
+  "specialite": [
+    "Tout"
+  ],
+  "villes": [
+    "all",
+    "Paris",
+    "Bordeaux",
+    "Lyon",
+    "Nice",
+    "Toulouse"
+  ],
+  "salaire": {
+    "minimum": "23000",
+    "maximum": "44000",
+    "Tout": {
+      "all": [
+        {"experience": "junior", "val1": 26000, "val2": 32000},
+        {"experience": "experimente", "val1": 32000, "val2": 39000},
+        {"experience": "senior", "val1": 39000, "val2": 43000}
+      ],
+      "Paris": [
+        {"experience": "junior", "val1": 24000, "val2": 30000},
+        {"experience": "experimente", "val1": 30000, "val2": 38000},
+        {"experience": "senior", "val1": 38000, "val2": 41000}
+      ],
+      "Bordeaux": [
+        {"experience": "junior", "val1": 26000, "val2": 32000},
+        {"experience": "experimente", "val1": 32000, "val2": 39000},
+        {"experience": "senior", "val1": 39000, "val2": 43000}
+      ],
+      "Lyon": [
+        {"experience": "junior", "val1": 24000, "val2": 30000},
+        {"experience": "experimente", "val1": 30000, "val2": 38000},
+        {"experience": "senior", "val1": 38000, "val2": 41000}
+      ],
+      "Nice": [
+        {"experience": "junior", "val1": 26000, "val2": 32000},
+        {"experience": "experimente", "val1": 32000, "val2": 39000},
+        {"experience": "senior", "val1": 39000, "val2": 43000}
+      ],
+      "Toulouse": [
+        {"experience": "junior", "val1": 24000, "val2": 30000},
+        {"experience": "experimente", "val1": 30000, "val2": 38000},
+        {"experience": "senior", "val1": 38000, "val2": 41000}
+      ]
+    }
+  },
+  "description": {
+    "text": "Dans la chaleur et le bruit des cuisines, sa brigade l’appelle “chef”. Derrière les fourneaux, c’est lui qui imagine et réalise tous les plats proposés aux clients, grâce à ses goûts, son imagination, son talent.\n\nVéritable chef d’orchestre, il choisit les produits, veille à leur bonne qualité et encadre l’équipe qui s’affaire quotidiennement derrière les casseroles. Il est l’unique garant de la réputation de son établissement.\n\nUne pincée de créativité et une bonne dose de résistance physique sont des ingrédients essentiels à sa réussite, qu’il travaille pour un restaurant étoilé ou un bistrot de quartier."
+  },
+  "competence": {
+    "text": "Cuisiner, créer, gérer."
+  },
+  "formation": {
+    "text": "Un CAP cuisine, un BEP restauration option cuisine, un bac pro cuisine ou un BTS hôtellerie-restauration option art culinaire."
+  },
+  "responsabilitesEvolution": {
+    "text":  "Junior (0 à 1 années d’expérience) : \n\n Profil expérimenté (2 à 5 années d’expérience) : \n\n Profil sénior (6+ années d’expérience) : "
+  }
+}

@@ -5,12 +5,12 @@
                v-on:loaded="barLoaded">
         <BottomBarItem
                 icon="~/assets/images/icones/ic_metier@3x.png"
-                title="Métier"
+                title="Métiers"
         >
         </BottomBarItem>
         <BottomBarItem
                 icon="~/assets/images/icones/ic_statistique@3x.png"
-                title="Statistique"
+                title="Statistiques"
         >
         </BottomBarItem>
         <BottomBarItem
@@ -29,7 +29,7 @@
 
 <script>
     import HomeMetier from "@/components/Views/HomeMetier.vue";
-    import Statistique from "@/components/Views/Statistique.vue";
+    import Statistiques from "@/components/Views/Statistiques.vue";
     import Job from "@/components/Views/Job.vue";
     import Profil from "@/components/Views/Profil.vue";
 
