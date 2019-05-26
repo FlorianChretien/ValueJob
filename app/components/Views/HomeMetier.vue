@@ -11,19 +11,19 @@
                 <FlexboxLayout flexWrap="wrap" justifyContent="space-around" class="container_shortcut">
                     <Label textWrap="true" class="h3" text="Raccourci métier"/>
                     <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around" @tap="onMetierTap('BOULANGER')">
-                        <Image src="~/assets/images/metier/boulanger.png" class="img img-g"/>
+                        <Image src="~/assets/images/metiers/boulanger.png" class="img img-g"/>
                         <Label textWrap="true" class="baseline" text="Boulanger"/>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around" @tap="onMetierTap('DEVELOPPEUR WEB')">
-                        <Image src="~/assets/images/metier/developpeur_web.png" class="img img-d"/>
+                        <Image src="~/assets/images/metiers/developpeur_web.png" class="img img-d"/>
                         <Label textWrap="true" class="baseline" text="Développeur Web"/>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around" @tap="onMetierTap('MEDECIN')">
-                        <Image src="~/assets/images/metier/docteur.png" class="img img-g"/>
+                        <Image src="~/assets/images/metiers/docteur.png" class="img img-g"/>
                         <Label textWrap="true" class="baseline" text="Médecin généraliste"/>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around" @tap="onMetierTap('ELEVEUR')">
-                        <Image src="~/assets/images/metier/eleveur.png" class="img img-d"/>
+                        <Image src="~/assets/images/metiers/eleveur.png" class="img img-d"/>
                         <Label textWrap="true" class="baseline" text="Éleveur"/>
                     </FlexboxLayout>
                 </FlexboxLayout>

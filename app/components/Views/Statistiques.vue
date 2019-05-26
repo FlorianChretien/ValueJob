@@ -154,15 +154,16 @@
                 font-weight: bold;
                 padding: 20;
             }
-            .art-1 { background-image: url('~/assets/images/statistique/img1.jpg'); }
-            .art-2 { background-image: url('~/assets/images/statistique/img2.jpg'); }
-            .art-3 { background-image: url('~/assets/images/statistique/img3.jpg'); }
-            .art-4 { background-image: url('~/assets/images/statistique/img4.jpg'); }
-            .art-5 { background-image: url('~/assets/images/statistique/img5.jpg'); }
-            .art-6 { background-image: url('~/assets/images/statistique/img6.jpg'); }
-            .art-7 { background-image: url('~/assets/images/statistique/img7.jpg'); }
-            .art-8 { background-image: url('~/assets/images/statistique/img8.jpg'); }
-            .art-9 { background-image: url('~/assets/images/statistique/img9.jpg'); }
+            .art-1 { background-image: url('~/assets/images/statistiques/img1.jpg'); }
+            .art-2 { background-image: url('~/assets/images/statistiques/img2.jpg'); }
+            .art-3 { background-image: url('~/assets/images/statistiques/img3.jpg'); }
+            .art-4 { background-image: url('~/assets/images/statistiques/img4.jpg'); }
+            .art-5 { background-image: url('~/assets/images/statistiques/img5.jpg'); }
+            .art-6 { background-image: url('~/assets/images/statistiques/img6.jpg'); }
+            .art-7 { background-image: url('~/assets/images/statistiques/img7.jpg'); }
+            .art-8 { background-image: url('~/assets/images/statistiques/img8.jpg'); }
+            .art-9 { background-image: url('~/assets/images/statistiques/img9.jpg'); }
+            .art-10 { background-image: url('~/assets/images/statistiques/img10.jpg'); }
         }
     }
 </style>

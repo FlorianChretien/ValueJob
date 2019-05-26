@@ -16,7 +16,7 @@
         <BottomBarItem
                 icon="~/assets/images/icones/ic_job@3x.png"
                 badge="3"
-                title="Job"
+                title="Offres d'emplois"
         >
         </BottomBarItem>
         <BottomBarItem
@@ -30,14 +30,14 @@
 <script>
     import HomeMetier from "@/components/Views/HomeMetier.vue";
     import Statistiques from "@/components/Views/Statistiques.vue";
-    import Job from "@/components/Views/Job.vue";
+    import Jobs from "@/components/Views/Jobs.vue";
     import Profil from "@/components/Views/Profil.vue";
 
     export default {
         components: {
             HomeMetier,
-            Statistique,
-            Job,
+            Statistiques,
+            Jobs,
             Profil
         },
         data () {
@@ -54,12 +54,12 @@
                         });
                         break;
                     case 1:
-                        this.$navigateTo(Statistique, {
+                        this.$navigateTo(Statistiques, {
                             frame: "rootFrame"
                         });
                         break;
                     case 2:
-                        this.$navigateTo(Job, {
+                        this.$navigateTo(Jobs, {
                             frame: "rootFrame"
                         });
                         break;

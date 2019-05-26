@@ -46,7 +46,6 @@
         methods: {
             onSearchSubmit(args) {
                 let search = args.object.text;
-                console.log(search.length);
                 if (search.length >= 2) {
                     this.load.isBusy = true;
                     this.load.loaderVisibility = 'visible';
