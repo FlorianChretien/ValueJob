@@ -9,7 +9,7 @@
                     <Button class="button" text="Chercher un métier" @tap="onButtonTap"/>
                 </FlexboxLayout>
                 <FlexboxLayout flexWrap="wrap" justifyContent="space-around" class="container_shortcut">
-                    <Label textWrap="true" class="h3" text="Raccourci métier"/>
+                    <Label textWrap="true" class="h3" text="Métiers du jour"/>
                     <FlexboxLayout flexDirection="column" width="50%" justifyContent="space-around" @tap="onMetierTap('BOULANGER')">
                         <Image src="~/assets/images/metiers/boulanger.png" class="img img-g"/>
                         <Label textWrap="true" class="baseline" text="Boulanger"/>

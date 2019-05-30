@@ -3,7 +3,10 @@ import App from './components/App'
 import store from './store'
 /*import VueDevtools from 'nativescript-vue-devtools'*/
 import RadCartesianChart from 'nativescript-ui-chart/vue'
+import RadDataForm from "nativescript-ui-dataform/vue";
+
 Vue.use(RadCartesianChart);
+Vue.use(RadDataForm);
 
 Vue.registerElement('BottomBar', () => require('nativescript-bottombar').BottomBar);
 Vue.registerElement('BottomBarItem', () => require('nativescript-bottombar').BottomBarItem);

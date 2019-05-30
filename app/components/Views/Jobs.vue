@@ -16,13 +16,28 @@
 <script>
     export default {
         data() {
-            return {searchPhrase: "",}
+            return {
+                searchPhrase: "",
+                job: {
+                    poste: '',
+                    description: '',
+                    type: '',
+                    salaire: '',
+                    competence: '',
+                    formation: ''
+                }
+            }
         },
         methods: {
             onSearchSubmit(args) {
                 let searchBar = args.object;
                 console.log("You are searching for " + searchBar.text);
             },
+        },
+        mounted() {
+            setTimeout(() => {
+                this.$refs.searchBar.nativeView.dismissSoftInput();
+            }, 100)
         }
     }
 </script>

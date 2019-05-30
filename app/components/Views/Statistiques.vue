@@ -147,6 +147,7 @@
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: cover;
+                filter: blur(10px);
             }
             .p {
                 font-size: 20;
