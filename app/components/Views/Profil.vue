@@ -32,15 +32,9 @@
 </template>
 
 <script>
-    import Connection from '@/components/Views/Connection.vue';
-
     export default {
-        components: {
-            Connection
-        },
         data() {
             return {
-                isConnected: false,
                 loginVisibility: "visible",
                 profilVisibility: "collapsed",
                 profil: {
@@ -69,15 +63,6 @@
             },
             onDeco() {
                 console.log("Button was pressed");
-            }
-        },
-        mounted() {
-            if (this.isConnected === false) {
-                setTimeout(() => {
-                        this.$navigateTo(Connection, {
-                            frame: "rootFrame"
-                        })
-                }, 100)
             }
         }
     }

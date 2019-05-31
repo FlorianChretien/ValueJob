@@ -1,12 +1,15 @@
 <template>
     <Page actionBarHidden="true">
-        <FlexboxLayout flexDirection="column" class="header-connection" :visibility="loginVisibility">
-            <Image alignSelf="center" src="~/assets/images/logo.png" class="logo"/>
-            <Label textWrap="true" class="p" text="Créer un compte pour aider la communauté ou postuler aux offres d'emplois"/>
-            <TextField v-model="user.email" />
-            <TextField v-model="user.password" secure="true" />
-            <Button text="Valider" @tap="onValid" />
-        </FlexboxLayout>
+        <ScrollView orientation="vertical">
+            <FlexboxLayout flexDirection="column" class="header-connection" :visibility="loginVisibility">
+                <Image alignSelf="center" src="~/assets/images/logo.png" class="logo"/>
+                <Label textWrap="true" class="p" text="Créer un compte pour aider la communauté ou postuler aux offres d'emplois"/>
+                <TextField v-model="user.email" hint="Email" keyboardType="email" />
+                <TextField v-model="user.password" hint="Password" secure="true" />
+                <Label text="Email au mauvais format" class="mail-error" :visibility="errorMail"></Label>
+                <Button text="Valider" @tap="onValid" />
+            </FlexboxLayout>
+        </ScrollView>
     </Page>
 </template>
 
@@ -20,28 +23,39 @@
                 user: {
                     email: "",
                     password: ""
-                }
+                },
+                errorMail: "collapsed"
             }
         },
         methods: {
             onValid() {
-                axios
-                    .post('https://vast-taiga-97693.herokuapp.com/user', {
-                        params: {
-                            user: this.user,
-                            password: this.password
-                        }
-                    })
-                    .then((response) => {
-                        if (response.data.email.length != 0 && response.data.password.length != 0) {
-                            this.$navigateTo(Profil, {
-                                frame: "rootFrame"
-                            });
-                        }
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
+                const emailValide = this.validateEmail(this.email);
+                console.log(emailValide);
+                if (emailValide === true) {
+                    axios
+                        .post('https://vast-taiga-97693.herokuapp.com/user', {
+                            params: {
+                                user: this.user,
+                                password: this.password
+                            }
+                        })
+                        .then((response) => {
+                            if (response.data.email.length != 0 && response.data.password.length != 0) {
+                                this.$navigateTo(Profil, {
+                                    frame: "rootFrame"
+                                });
+                            }
+                        })
+                        .catch((error) => {
+                            console.log(error)
+                        })
+                } else if (emailValide === false) {
+                    this.errorMail = "visible";
+                }
+            },
+            validateEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
             }
         }
     }
@@ -66,6 +80,13 @@
         }
         Button {
             background-color: #ffffff;
+        }
+
+        TextField {
+            color: white;
+            placeholder-color: white;
+            border-color: white;
+            --android-line-color: white;
         }
     }
 </style>

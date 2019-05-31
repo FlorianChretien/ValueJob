@@ -28,22 +28,30 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     import HomeMetier from "@/components/Views/HomeMetier.vue";
     import Statistiques from "@/components/Views/Statistiques.vue";
     import Jobs from "@/components/Views/Jobs.vue";
     import Profil from "@/components/Views/Profil.vue";
+    import Connection from '@/components/Views/Connection.vue';
 
     export default {
         components: {
             HomeMetier,
             Statistiques,
             Jobs,
-            Profil
+            Profil,
+            Connection
         },
         data () {
             return {
                 labelVisibility: 0
             }
+        },
+        computed: {
+            ...mapGetters({
+                isConnected: 'isConnected'
+            })
         },
         methods: {
             tabSelected: function(event) {
@@ -64,9 +72,15 @@
                         });
                         break;
                     case 3:
-                        this.$navigateTo(Profil, {
-                            frame: "rootFrame"
-                        });
+                        if (this.isConnected === true) {
+                            this.$navigateTo(Profil, {
+                                frame: "rootFrame"
+                            });
+                        } else if (this.isConnected === false) {
+                            this.$navigateTo(Connection, {
+                                frame: "rootFrame"
+                            });
+                        }
                         break;
                 }
             },
