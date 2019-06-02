@@ -11,6 +11,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     import HomeMetier from '@/components/Views/HomeMetier.vue'
     import BottomBar from '@/components/BottomBar.vue'
 
@@ -29,6 +30,7 @@
                 this.$navigateTo(HomeMetier, {
                     frame: "rootFrame"
                 });
+                //axios.get('https://vast-taiga-97693.herokuapp.com/metier?nom=BOULANGER').then((response) => { console.log(response) }).catch((e) => { console.log(e) })
             }, 400);
         }
     }

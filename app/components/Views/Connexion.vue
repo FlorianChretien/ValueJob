@@ -4,11 +4,14 @@
             <FlexboxLayout flexDirection="column" class="header-connection">
                 <Image alignSelf="center" src="~/assets/images/logo.png" class="logo"/>
                 <Label textWrap="true" class="p" text="Connectez vous pour aider la communauté ou postuler aux offres d'emplois"/>
+                <StackLayout :visibility="load.loaderVisibility" justify-content="center">
+                    <ActivityIndicator :busy="load.isBusy" />
+                </StackLayout>
                 <TextField v-model="user.email" hint="Email" keyboardType="email" />
                 <TextField v-model="user.password" hint="Mot de passe" secure="true" />
                 <Label text="Mauvais identifiants" class="message-error" :visibility="errorLogin"></Label>
                 <Label text="Email au mauvais format" class="mail-error" :visibility="errorMail"></Label>
-                <Button text="Connection" @tap="onCon" />
+                <Button text="Connexion" @tap="onCon" />
                 <Button text="Créer un compte" @tap="onCreate" />
                 <Label text="Vous avez oublié votre mot de passe ?" class="forgot" @tap="onForgot" />
             </FlexboxLayout>
@@ -33,13 +36,18 @@
                     password: ""
                 },
                 errorLogin: "collapsed",
-                errorMail: "collapsed"
+                errorMail: "collapsed",
+                load: {
+                    isBusy: false,
+                    loaderVisibility: 'collapsed'
+                }
             }
         },
         methods: {
             onCon() {
-                const emailValide = this.validateEmail(this.email);
-                console.log(emailValide);
+                this.load.isBusy = true;
+                this.load.loaderVisibility = 'visible';
+                const emailValide = this.validateEmail(this.user.email);
                 if (emailValide === true) {
                     axios
                         .get('https://vast-taiga-97693.herokuapp.com/user', {
@@ -50,19 +58,27 @@
                         })
                         .then((response) => {
                             if (response.data.email.length != 0 && response.data.password.length != 0) {
+                                this.$store.dispatch('storeUser', response.data);
+                                this.$store.dispatch('updateIsConnected', true);
                                 this.$navigateTo(Profil, {
                                     frame: "rootFrame"
                                 });
                             } else {
                                 this.errorLogin = "visible";
                             }
+                            this.load.isBusy = false;
+                            this.load.loaderVisibility = 'collapsed';
                         })
                         .catch((error) => {
                             console.log(error)
                             this.errorLogin = "visible";
+                            this.load.isBusy = false;
+                            this.load.loaderVisibility = 'collapsed';
                         })
                 } else if (emailValide === false) {
                     this.errorMail = "visible";
+                    this.load.isBusy = false;
+                    this.load.loaderVisibility = 'collapsed';
                 }
             },
             onCreate() {
@@ -73,7 +89,7 @@
             onForgot() {
                 prompt({
                     title: "Mot de passe oublié",
-                    message: "",
+                    message: "Entrer votre adresse email :",
                     okButtonText: "Reset",
                     cancelButtonText: "Annuler",
                     defaultText: "",

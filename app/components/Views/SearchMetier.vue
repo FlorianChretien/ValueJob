@@ -77,7 +77,7 @@
                 });
             },
             onTapMetier (metier) {
-                this.$navigateTo(Metier, {
+                this.$navigateTo(Metiers, {
                     frame: "rootFrame",
                     props: {
                         shortcut: metier

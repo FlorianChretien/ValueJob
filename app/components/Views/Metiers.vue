@@ -61,8 +61,8 @@
                     <Label class="p" textWrap="true" :text="metier.formation.text"/>
                     <Label class="h3" textWrap="true" text="Responsabilités et évolution"/>
                     <Label class="p" textWrap="true" :text="metier.responsabilitesEvolution.text"/>
-                    <Button text="Éditer ce métier" @tap="tap" class="editer_metier"></Button>
-                    <Button text="Partager votre salaire (anonyme)" @tap="tap"></Button>
+                    <Button text="Éditer ce métier" @tap="onEditeMetier" class="editer_metier"></Button>
+                    <Button text="Partager votre salaire (anonyme)" @tap="tapShareSalaire"></Button>
                 </FlexboxLayout>
             </StackLayout>
         </ScrollView>
@@ -70,14 +70,21 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     import axios from "axios";
     import HomeMetier from '@/components/Views/HomeMetier.vue'
     import Statistiques from '@/components/Views/Statistiques.vue'
+    import Profil from "@/components/Views/Profil.vue"
+    import Connexion from '@/components/Views/Connexion.vue'
+    import EditionMetier from '@/components/Views/EditionMetier.vue'
 
     export default {
         components: {
             HomeMetier,
-            Statistiques
+            Statistiques,
+            Profil,
+            Connexion,
+            EditionMetier
         },
         data() {
             return {
@@ -106,7 +113,13 @@
         },
         props: {
             shortcut: String,
-            from: String
+            from: String,
+            message: String
+        },
+        computed: {
+            ...mapGetters({
+                isConnected: 'isConnected'
+            })
         },
         methods: {
             goBack() {
@@ -145,13 +158,73 @@
                 btn.backgroundColor = "#ff1228";*/
                 this.salaireSelect.specialite = specialite;
             },
-            tap() {
-
+            onEditeMetier () {
+                if (this.isConnected === true) {
+                    this.$navigateTo(EditionMetier, {
+                        frame: "rootFrame",
+                        props: {
+                            from: "Metiers",
+                            shortcut: this.metier.nom
+                        }
+                    });
+                } else if (this.isConnected === false) {
+                    login("Veuillez vous connecter", "email", "mot de passe")
+                        .then(result => {
+                            axios
+                                .get('https://vast-taiga-97693.herokuapp.com/user', {
+                                    params: {
+                                        email: result.userName,
+                                        password: result.password
+                                    }
+                                })
+                                .then((response) => {
+                                    if (typeof response.data.email !== 'undefined' && typeof response.data.password !== 'undefined' && response.data.email.length != 0 && response.data.password.length != 0) {
+                                        this.$store.dispatch('storeUser', response.data);
+                                        this.$store.dispatch('updateIsConnected', true);
+                                        this.$navigateTo(EditionMetier, {
+                                            frame: "rootFrame",
+                                            props: {
+                                                from: "Metiers",
+                                                shortcut: this.metier.nom
+                                            }
+                                        });
+                                    } else {
+                                        alert('Mauvais identifiants')
+                                            .then(() => {
+                                                console.log("metier connection - mauvais identifiants");
+                                            });
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.log(error)
+                                })
+                        });
+                }
+            },
+            tapShareSalaire() {
+                if (this.isConnected === true) {
+                    this.$navigateTo(Profil, {
+                        frame: "rootFrame"
+                    });
+                } else if (this.isConnected === false) {
+                    this.$navigateTo(Connexion, {
+                        frame: "rootFrame"
+                    });
+                }
+            },
+            confirmationEdition () {
+                alert(this.message)
+                    .then(() => {
+                        console.log("Alert dialog closed.");
+                    });
             }
         },
-        mounted() {
+        mounted () {
             console.log(this.shortcut);
             this.loadData();
+            if (typeof this.message !== 'undefined' && this.message.length != 0) {
+                this.confirmationEdition()
+            }
         }
     }
 </script>

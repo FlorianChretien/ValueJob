@@ -33,7 +33,7 @@
     import Statistiques from "@/components/Views/Statistiques.vue";
     import Jobs from "@/components/Views/Jobs.vue";
     import Profil from "@/components/Views/Profil.vue";
-    import Connection from '@/components/Views/Connection.vue';
+    import Connexion from '@/components/Views/Connexion.vue';
 
     export default {
         components: {
@@ -41,7 +41,7 @@
             Statistiques,
             Jobs,
             Profil,
-            Connection
+            Connexion
         },
         data () {
             return {
@@ -77,7 +77,7 @@
                                 frame: "rootFrame"
                             });
                         } else if (this.isConnected === false) {
-                            this.$navigateTo(Connection, {
+                            this.$navigateTo(Connexion, {
                                 frame: "rootFrame"
                             });
                         }
