@@ -5995,17 +5995,17 @@ timers-browserify@^2.0.4:
   dependencies:
     setimmediate "^1.0.4"
 
-tns-core-modules-widgets@6.0.0-next-2019-05-22-183541-04:
-  version "6.0.0-next-2019-05-22-183541-04"
-  resolved "https://registry.yarnpkg.com/tns-core-modules-widgets/-/tns-core-modules-widgets-6.0.0-next-2019-05-22-183541-04.tgz#14ceb321e68c796f2d863594479cfa576b3cb6e8"
-  integrity sha512-hccjWrNMwNaPMLQ1nFhFOEz3rNKIsa3o5kFlzm5sZIkkAn7Qfq/xheqOonjRW1ybRFsAfOHlPx+xlJrrBMi5jA==
+tns-core-modules-widgets@6.0.0-next-2019-06-05-104348-01:
+  version "6.0.0-next-2019-06-05-104348-01"
+  resolved "https://registry.yarnpkg.com/tns-core-modules-widgets/-/tns-core-modules-widgets-6.0.0-next-2019-06-05-104348-01.tgz#3a80d292d8cd2bdea66f1706d6e4d10a77767486"
+  integrity sha512-+eFcfhUk4Dv8PObRlJkhUHX4kwX9T/ppR49dtw89ngWD4Y5V8xojs5bKMxpt11y3w5P3wpMZvD2/g9uQ52gjgw==
 
 tns-core-modules@^6.0.0-next-2019-05-16-141945-01:
-  version "6.0.0-next-2019-05-22-183541-04"
-  resolved "https://registry.yarnpkg.com/tns-core-modules/-/tns-core-modules-6.0.0-next-2019-05-22-183541-04.tgz#890d954a9770b580f8e56c9c000904b20e8f97fe"
-  integrity sha512-1lOh5dhZkMSuGingxfzChibmHgh6KhPYL4dDFQzdzcfAN1StwybNvBxfHhtqDS5yGDeQuU4u6BGpttzjPuj1/Q==
+  version "6.0.0-next-2019-06-06-180446-01"
+  resolved "https://registry.yarnpkg.com/tns-core-modules/-/tns-core-modules-6.0.0-next-2019-06-06-180446-01.tgz#7e1b39f85b2d09ffea777188496d3ba00347658e"
+  integrity sha512-DPv5didZynv3xFhMT+bJvl97cHQOzQddZEaluIGCxkOfJ5luEtrwK6G4ZhQMrKKIgKOGKr7/Vn/vVk7xVxZZtg==
   dependencies:
-    tns-core-modules-widgets "6.0.0-next-2019-05-22-183541-04"
+    tns-core-modules-widgets "6.0.0-next-2019-06-05-104348-01"
     tslib "^1.9.3"
 
 to-array@0.1.4:

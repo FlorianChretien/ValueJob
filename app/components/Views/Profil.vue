@@ -6,7 +6,7 @@
                 <Label :text="prenomNom" class="h2"/>
                 <Label :text="user.editable.metier"/>
                 <FlexboxLayout flexDirection="row" class="localisation" justifyContent="center">
-                    <Image src="~/assets/images/profil/ico_loc.png" width="12" height="12"/>
+                    <Image src="~/assets/images/profil/ico_loc.png" width="12" height="12" v-if="user.editable.localisation.length != 0" />
                     <Label :text="user.editable.localisation"/>
                 </FlexboxLayout>
             </FlexboxLayout>
@@ -58,6 +58,11 @@
                             name: "salaireNet",
                             displayName: "Salaire Net",
                             editor: "number"
+                        },
+                        {
+                            name: "rechercheEmploi",
+                            displayName: "Recherche emploi",
+                            editor: "switch"
                         }
                     ]
                 },
@@ -79,6 +84,7 @@
         methods: {
             onPropertyCommitted (data) {
                 this.userCommit.editable = JSON.parse(data.object.editedObject);
+                //A FAIRE//console.log(this.userCommit.editable.rechercheEmploi)
             },
             onSauv() {
                 this.load.isBusy = true;

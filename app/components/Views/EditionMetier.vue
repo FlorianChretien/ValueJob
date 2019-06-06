@@ -90,7 +90,8 @@
             onSubmit() {
                 confirm({
                     title: "Confirmer",
-                    message: "Attention, en modifiant cette fiche métier vous vous engagez personnelement sur le contenu que vous avez écrit. Nous ne sommes pas responsable. Plus plus d'informations merci de lire les mentions légal.",
+                    message: "Attention, en modifiant cette fiche métier vous vous engagez personnellement sur le contenu que vous avez écrit." +
+                        " Nous ne sommes pas responsables. Plus plus d'informations, merci de lire les mentions légales.",
                     okButtonText: "Oui",
                     cancelButtonText: "Non"
                 }).then(result => {
@@ -109,7 +110,7 @@
                                     props: {
                                         from: "HomeMetier",
                                         shortcut: this.shortcut,
-                                        message: "Merci pour votre modification a bien été prise en compte."
+                                        message: "Merci, votre modification a bien été prise en compte."
                                     }
                                 });
                             }

@@ -15,7 +15,7 @@
         </BottomBarItem>
         <BottomBarItem
                 icon="~/assets/images/icones/ic_job@3x.png"
-                badge="3"
+                badge="2"
                 title="Offres d'emplois"
         >
         </BottomBarItem>

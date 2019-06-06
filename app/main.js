@@ -3,7 +3,7 @@ import App from './components/App'
 import store from './store'
 /*import VueDevtools from 'nativescript-vue-devtools'*/
 import RadCartesianChart from 'nativescript-ui-chart/vue'
-import RadDataForm from "nativescript-ui-dataform/vue"
+import RadDataForm from 'nativescript-ui-dataform/vue'
 
 Vue.use(RadCartesianChart);
 Vue.use(RadDataForm);

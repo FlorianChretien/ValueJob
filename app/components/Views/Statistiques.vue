@@ -30,7 +30,7 @@
                 </StackLayout>
                 <StackLayout class="article">
                     <FlexboxLayout flexDirection="column">
-                        <FlexboxLayout class="imgBg art-1" width="100%" height="150">
+                        <FlexboxLayout class="imgBg art-1" width="100%" height="150" @tap="onOpenStat1">
                             <Label class="p" textWrap="true" text="Top 10 des métiers les mieux rémunérés en France" />
                         </FlexboxLayout>
                         <FlexboxLayout class="imgBg art-2" width="100%" height="150">
@@ -69,11 +69,12 @@
 
 <script>
     import Metiers from '@/components/Views/Metiers.vue';
-    import BottomBar from '@/components/BottomBar.vue'
+    import FicheStat1 from '@/components/Views/FicheStat1.vue';
 
     export default {
         components: {
-            BottomBar
+            Metiers,
+            FicheStat1
         },
         data() {
             return {
@@ -88,6 +89,14 @@
                     props: {
                         from: "Statistiques",
                         shortcut: MetierTap
+                    }
+                });
+            },
+            onOpenStat1 () {
+                this.$navigateTo(FicheStat1, {
+                    frame: "rootFrame",
+                    props: {
+                        from: "Statistiques"
                     }
                 });
             }
@@ -135,8 +144,6 @@
         }
 
         .article {
-            margin: 0 0 20 0;
-
             .h2 {
                 color: #4D4D4D;
                 font-size: 22;

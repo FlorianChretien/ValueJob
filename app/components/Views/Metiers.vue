@@ -77,6 +77,7 @@
     import Profil from "@/components/Views/Profil.vue"
     import Connexion from '@/components/Views/Connexion.vue'
     import EditionMetier from '@/components/Views/EditionMetier.vue'
+    import FicheStat1 from '@/components/Views/FicheStat1.vue'
 
     export default {
         components: {
@@ -84,7 +85,8 @@
             Statistiques,
             Profil,
             Connexion,
-            EditionMetier
+            EditionMetier,
+            FicheStat1
         },
         data() {
             return {
@@ -131,6 +133,10 @@
                     this.$navigateTo(HomeMetier, {
                         frame: "rootFrame"
                     });
+                } else if (this.from === "FicheStat1") {
+                    this.$navigateTo(FicheStat1, {
+                        frame: "rootFrame"
+                    });
                 }
             },
             loadData() {
@@ -153,9 +159,8 @@
                         console.log(error);
                     });
             },
-            onButtonTapSpecialite(specialite, args) {
-                /*const btn = args.object;
-                btn.backgroundColor = "#ff1228";*/
+            onButtonTapSpecialite(specialite) {
+                //this.$refs.specialiteA.classList.add("isActive")
                 this.salaireSelect.specialite = specialite;
             },
             onEditeMetier () {
